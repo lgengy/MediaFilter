@@ -37,25 +37,25 @@ namespace MediaFilter.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int CountBet {
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\")]
+        public string ImportMediaLocation {
             get {
-                return ((int)(this["CountBet"]));
+                return ((string)(this["ImportMediaLocation"]));
             }
             set {
-                this["CountBet"] = value;
+                this["ImportMediaLocation"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\")]
-        public string ImportFileLocation {
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        public string ExportFilterLocation {
             get {
-                return ((string)(this["ImportFileLocation"]));
+                return ((string)(this["ExportFilterLocation"]));
             }
             set {
-                this["ImportFileLocation"] = value;
+                this["ExportFilterLocation"] = value;
             }
         }
     }
