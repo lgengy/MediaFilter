@@ -32,13 +32,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdb_ImportDirectory = new System.Windows.Forms.RadioButton();
             this.rdb_ImportFile = new System.Windows.Forms.RadioButton();
-            this.btn_ImportTemplate = new System.Windows.Forms.Button();
             this.cbx_SoccerType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_ImportFile = new System.Windows.Forms.Button();
+            this.btn_ImportTemplate = new System.Windows.Forms.Button();
+            this.btn_ImportMedia = new System.Windows.Forms.Button();
             this.btn_DeleteMedia = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txt_CountPlugin = new System.Windows.Forms.TextBox();
+            this.nud_PluginCount = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbx_ExportMode = new System.Windows.Forms.ComboBox();
@@ -58,14 +58,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btn_DeleteTemplate = new System.Windows.Forms.Button();
             this.btn_SaveTemplate = new System.Windows.Forms.Button();
+            this.btn_TemplateClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lb_MediaFile = new System.Windows.Forms.ListBox();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.btn_MediaClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_PluginCount)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.pnl_Templates.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -80,10 +83,8 @@
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.rdb_ImportDirectory);
             this.groupBox1.Controls.Add(this.rdb_ImportFile);
-            this.groupBox1.Controls.Add(this.btn_ImportTemplate);
             this.groupBox1.Controls.Add(this.cbx_SoccerType);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.btn_ImportFile);
             this.groupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
             this.groupBox1.Name = "groupBox1";
@@ -95,37 +96,24 @@
             // 
             // rdb_ImportDirectory
             // 
-            this.rdb_ImportDirectory.AutoSize = true;
-            this.rdb_ImportDirectory.Location = new System.Drawing.Point(91, 54);
+            this.rdb_ImportDirectory.Checked = true;
+            this.rdb_ImportDirectory.Location = new System.Drawing.Point(112, 54);
             this.rdb_ImportDirectory.Name = "rdb_ImportDirectory";
-            this.rdb_ImportDirectory.Size = new System.Drawing.Size(90, 20);
+            this.rdb_ImportDirectory.Size = new System.Drawing.Size(100, 20);
             this.rdb_ImportDirectory.TabIndex = 46;
+            this.rdb_ImportDirectory.TabStop = true;
             this.rdb_ImportDirectory.Text = "导入目录";
             this.rdb_ImportDirectory.UseVisualStyleBackColor = true;
             // 
             // rdb_ImportFile
             // 
-            this.rdb_ImportFile.AutoSize = true;
-            this.rdb_ImportFile.Checked = true;
             this.rdb_ImportFile.Location = new System.Drawing.Point(6, 54);
             this.rdb_ImportFile.Name = "rdb_ImportFile";
-            this.rdb_ImportFile.Size = new System.Drawing.Size(90, 20);
+            this.rdb_ImportFile.Size = new System.Drawing.Size(100, 20);
             this.rdb_ImportFile.TabIndex = 45;
-            this.rdb_ImportFile.TabStop = true;
             this.rdb_ImportFile.Text = "导入文件";
             this.rdb_ImportFile.UseVisualStyleBackColor = true;
             this.rdb_ImportFile.CheckedChanged += new System.EventHandler(this.Rdb_ImportFile_CheckedChanged);
-            // 
-            // btn_ImportTemplate
-            // 
-            this.btn_ImportTemplate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_ImportTemplate.Location = new System.Drawing.Point(184, 49);
-            this.btn_ImportTemplate.Name = "btn_ImportTemplate";
-            this.btn_ImportTemplate.Size = new System.Drawing.Size(82, 27);
-            this.btn_ImportTemplate.TabIndex = 50;
-            this.btn_ImportTemplate.Text = "导入模板";
-            this.btn_ImportTemplate.UseVisualStyleBackColor = true;
-            this.btn_ImportTemplate.Click += new System.EventHandler(this.Btn_ImportTemplate_Click);
             // 
             // cbx_SoccerType
             // 
@@ -134,7 +122,7 @@
             this.cbx_SoccerType.FormattingEnabled = true;
             this.cbx_SoccerType.Items.AddRange(new object[] {
             "排三"});
-            this.cbx_SoccerType.Location = new System.Drawing.Point(80, 19);
+            this.cbx_SoccerType.Location = new System.Drawing.Point(98, 19);
             this.cbx_SoccerType.Name = "cbx_SoccerType";
             this.cbx_SoccerType.Size = new System.Drawing.Size(95, 24);
             this.cbx_SoccerType.TabIndex = 44;
@@ -149,24 +137,37 @@
             this.label3.Text = "过滤类型：";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btn_ImportFile
+            // btn_ImportTemplate
             // 
-            this.btn_ImportFile.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_ImportFile.Location = new System.Drawing.Point(184, 18);
-            this.btn_ImportFile.Name = "btn_ImportFile";
-            this.btn_ImportFile.Size = new System.Drawing.Size(82, 27);
-            this.btn_ImportFile.TabIndex = 5;
-            this.btn_ImportFile.Text = "导入媒体";
-            this.btn_ImportFile.UseVisualStyleBackColor = true;
-            this.btn_ImportFile.Click += new System.EventHandler(this.Btn_ImportMedia_Click);
+            this.btn_ImportTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_ImportTemplate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_ImportTemplate.Location = new System.Drawing.Point(243, 4);
+            this.btn_ImportTemplate.Name = "btn_ImportTemplate";
+            this.btn_ImportTemplate.Size = new System.Drawing.Size(48, 27);
+            this.btn_ImportTemplate.TabIndex = 50;
+            this.btn_ImportTemplate.Text = "导入";
+            this.btn_ImportTemplate.UseVisualStyleBackColor = true;
+            this.btn_ImportTemplate.Click += new System.EventHandler(this.Btn_ImportTemplate_Click);
+            // 
+            // btn_ImportMedia
+            // 
+            this.btn_ImportMedia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_ImportMedia.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_ImportMedia.Location = new System.Drawing.Point(298, 4);
+            this.btn_ImportMedia.Name = "btn_ImportMedia";
+            this.btn_ImportMedia.Size = new System.Drawing.Size(49, 27);
+            this.btn_ImportMedia.TabIndex = 5;
+            this.btn_ImportMedia.Text = "导入";
+            this.btn_ImportMedia.UseVisualStyleBackColor = true;
+            this.btn_ImportMedia.Click += new System.EventHandler(this.Btn_ImportMedia_Click);
             // 
             // btn_DeleteMedia
             // 
             this.btn_DeleteMedia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_DeleteMedia.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_DeleteMedia.Location = new System.Drawing.Point(373, 4);
+            this.btn_DeleteMedia.Location = new System.Drawing.Point(410, 4);
             this.btn_DeleteMedia.Name = "btn_DeleteMedia";
-            this.btn_DeleteMedia.Size = new System.Drawing.Size(87, 27);
+            this.btn_DeleteMedia.Size = new System.Drawing.Size(50, 27);
             this.btn_DeleteMedia.TabIndex = 47;
             this.btn_DeleteMedia.Text = "删除";
             this.btn_DeleteMedia.UseVisualStyleBackColor = true;
@@ -174,26 +175,38 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txt_CountPlugin);
+            this.groupBox2.Controls.Add(this.nud_PluginCount);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(276, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(250, 83);
+            this.groupBox2.Size = new System.Drawing.Size(192, 83);
             this.groupBox2.TabIndex = 46;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "设置区";
             this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.SetGroupBoxBorder);
             // 
-            // txt_CountPlugin
+            // nud_PluginCount
             // 
-            this.txt_CountPlugin.Font = new System.Drawing.Font("宋体", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt_CountPlugin.Location = new System.Drawing.Point(94, 25);
-            this.txt_CountPlugin.Name = "txt_CountPlugin";
-            this.txt_CountPlugin.Size = new System.Drawing.Size(30, 20);
-            this.txt_CountPlugin.TabIndex = 13;
-            this.txt_CountPlugin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_CountPlugin.Leave += new System.EventHandler(this.Txt_CountPlugin_Leave);
+            this.nud_PluginCount.Location = new System.Drawing.Point(93, 22);
+            this.nud_PluginCount.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nud_PluginCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_PluginCount.Name = "nud_PluginCount";
+            this.nud_PluginCount.Size = new System.Drawing.Size(49, 26);
+            this.nud_PluginCount.TabIndex = 14;
+            this.nud_PluginCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -217,9 +230,9 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cbx_IssueEnd);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(530, 2);
+            this.groupBox3.Location = new System.Drawing.Point(472, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(407, 83);
+            this.groupBox3.Size = new System.Drawing.Size(465, 83);
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "导出区";
@@ -236,7 +249,7 @@
             this.cbx_ExportMode.Items.AddRange(new object[] {
             "横向",
             "纵向"});
-            this.cbx_ExportMode.Location = new System.Drawing.Point(244, 52);
+            this.cbx_ExportMode.Location = new System.Drawing.Point(282, 52);
             this.cbx_ExportMode.Name = "cbx_ExportMode";
             this.cbx_ExportMode.Size = new System.Drawing.Size(67, 24);
             this.cbx_ExportMode.TabIndex = 45;
@@ -244,7 +257,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(198, 54);
+            this.label2.Location = new System.Drawing.Point(236, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 23);
             this.label2.TabIndex = 44;
@@ -253,11 +266,10 @@
             // 
             // rdBtn_ExportFile
             // 
-            this.rdBtn_ExportFile.AutoSize = true;
             this.rdBtn_ExportFile.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdBtn_ExportFile.Location = new System.Drawing.Point(110, 55);
+            this.rdBtn_ExportFile.Location = new System.Drawing.Point(132, 55);
             this.rdBtn_ExportFile.Name = "rdBtn_ExportFile";
-            this.rdBtn_ExportFile.Size = new System.Drawing.Size(81, 18);
+            this.rdBtn_ExportFile.Size = new System.Drawing.Size(96, 18);
             this.rdBtn_ExportFile.TabIndex = 6;
             this.rdBtn_ExportFile.Text = "导出文件";
             this.rdBtn_ExportFile.UseVisualStyleBackColor = true;
@@ -266,17 +278,18 @@
             // 
             this.cbx_IssueStart.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cbx_IssueStart.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbx_IssueStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_IssueStart.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbx_IssueStart.FormattingEnabled = true;
-            this.cbx_IssueStart.Location = new System.Drawing.Point(56, 21);
+            this.cbx_IssueStart.Location = new System.Drawing.Point(58, 21);
             this.cbx_IssueStart.Name = "cbx_IssueStart";
-            this.cbx_IssueStart.Size = new System.Drawing.Size(114, 24);
+            this.cbx_IssueStart.Size = new System.Drawing.Size(121, 24);
             this.cbx_IssueStart.TabIndex = 40;
             // 
             // btn_Export
             // 
             this.btn_Export.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Export.Location = new System.Drawing.Point(320, 20);
+            this.btn_Export.Location = new System.Drawing.Point(376, 20);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(82, 54);
             this.btn_Export.TabIndex = 7;
@@ -286,15 +299,14 @@
             // 
             // rdBtn_ExportDirectory
             // 
-            this.rdBtn_ExportDirectory.AutoSize = true;
             this.rdBtn_ExportDirectory.Checked = true;
             this.rdBtn_ExportDirectory.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rdBtn_ExportDirectory.Location = new System.Drawing.Point(11, 55);
             this.rdBtn_ExportDirectory.Name = "rdBtn_ExportDirectory";
-            this.rdBtn_ExportDirectory.Size = new System.Drawing.Size(95, 18);
+            this.rdBtn_ExportDirectory.Size = new System.Drawing.Size(96, 18);
             this.rdBtn_ExportDirectory.TabIndex = 5;
             this.rdBtn_ExportDirectory.TabStop = true;
-            this.rdBtn_ExportDirectory.Text = "导出文件夹";
+            this.rdBtn_ExportDirectory.Text = "导出目录";
             this.rdBtn_ExportDirectory.UseVisualStyleBackColor = true;
             this.rdBtn_ExportDirectory.CheckedChanged += new System.EventHandler(this.RdBtn_ExportDirectory_CheckedChanged);
             // 
@@ -311,7 +323,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(169, 21);
+            this.label4.Location = new System.Drawing.Point(191, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 23);
             this.label4.TabIndex = 41;
@@ -322,9 +334,10 @@
             // 
             this.cbx_IssueEnd.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cbx_IssueEnd.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbx_IssueEnd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_IssueEnd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbx_IssueEnd.FormattingEnabled = true;
-            this.cbx_IssueEnd.Location = new System.Drawing.Point(197, 21);
+            this.cbx_IssueEnd.Location = new System.Drawing.Point(235, 21);
             this.cbx_IssueEnd.Name = "cbx_IssueEnd";
             this.cbx_IssueEnd.Size = new System.Drawing.Size(114, 24);
             this.cbx_IssueEnd.TabIndex = 42;
@@ -332,7 +345,7 @@
             // pnl_Templates
             // 
             this.pnl_Templates.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableLayoutPanel1.SetColumnSpan(this.pnl_Templates, 3);
+            this.tableLayoutPanel1.SetColumnSpan(this.pnl_Templates, 5);
             this.pnl_Templates.Controls.Add(this.lb_Template);
             this.pnl_Templates.Controls.Add(this.splitter1);
             this.pnl_Templates.Location = new System.Drawing.Point(4, 38);
@@ -372,14 +385,19 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.tableLayoutPanel1.Controls.Add(this.pnl_Templates, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_DeleteTemplate, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btn_SaveTemplate, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_ImportTemplate, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_DeleteTemplate, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_SaveTemplate, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btn_TemplateClear, 2, 0);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(472, 89);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -394,7 +412,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 27);
+            this.panel1.Size = new System.Drawing.Size(232, 27);
             this.panel1.TabIndex = 49;
             // 
             // label7
@@ -403,7 +421,7 @@
             this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.Location = new System.Drawing.Point(0, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(300, 27);
+            this.label7.Size = new System.Drawing.Size(232, 27);
             this.label7.TabIndex = 0;
             this.label7.Text = "模板";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -412,9 +430,9 @@
             // 
             this.btn_DeleteTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_DeleteTemplate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_DeleteTemplate.Location = new System.Drawing.Point(311, 4);
+            this.btn_DeleteTemplate.Location = new System.Drawing.Point(353, 4);
             this.btn_DeleteTemplate.Name = "btn_DeleteTemplate";
-            this.btn_DeleteTemplate.Size = new System.Drawing.Size(70, 27);
+            this.btn_DeleteTemplate.Size = new System.Drawing.Size(48, 27);
             this.btn_DeleteTemplate.TabIndex = 50;
             this.btn_DeleteTemplate.Text = "删除";
             this.btn_DeleteTemplate.UseVisualStyleBackColor = true;
@@ -424,23 +442,39 @@
             // 
             this.btn_SaveTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_SaveTemplate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_SaveTemplate.Location = new System.Drawing.Point(388, 4);
+            this.btn_SaveTemplate.Location = new System.Drawing.Point(408, 4);
             this.btn_SaveTemplate.Name = "btn_SaveTemplate";
-            this.btn_SaveTemplate.Size = new System.Drawing.Size(72, 27);
+            this.btn_SaveTemplate.Size = new System.Drawing.Size(52, 27);
             this.btn_SaveTemplate.TabIndex = 51;
             this.btn_SaveTemplate.Text = "保存";
             this.btn_SaveTemplate.UseVisualStyleBackColor = true;
             this.btn_SaveTemplate.Click += new System.EventHandler(this.Btn_SaveTemplate_Click);
             // 
+            // btn_TemplateClear
+            // 
+            this.btn_TemplateClear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_TemplateClear.Location = new System.Drawing.Point(298, 4);
+            this.btn_TemplateClear.Name = "btn_TemplateClear";
+            this.btn_TemplateClear.Size = new System.Drawing.Size(48, 27);
+            this.btn_TemplateClear.TabIndex = 52;
+            this.btn_TemplateClear.Text = "清空";
+            this.btn_TemplateClear.UseVisualStyleBackColor = true;
+            this.btn_TemplateClear.Click += new System.EventHandler(this.Btn_DataClear_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.btn_DeleteMedia, 1, 0);
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel2.Controls.Add(this.btn_DeleteMedia, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_MediaClear, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btn_ImportMedia, 1, 0);
+            this.tableLayoutPanel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 89);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
@@ -452,7 +486,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableLayoutPanel2.SetColumnSpan(this.panel2, 2);
+            this.tableLayoutPanel2.SetColumnSpan(this.panel2, 4);
             this.panel2.Controls.Add(this.lb_MediaFile);
             this.panel2.Controls.Add(this.splitter2);
             this.panel2.Location = new System.Drawing.Point(4, 38);
@@ -495,7 +529,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(362, 27);
+            this.panel3.Size = new System.Drawing.Size(287, 27);
             this.panel3.TabIndex = 49;
             // 
             // label8
@@ -504,10 +538,21 @@
             this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(362, 27);
+            this.label8.Size = new System.Drawing.Size(287, 27);
             this.label8.TabIndex = 0;
             this.label8.Text = "媒体";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_MediaClear
+            // 
+            this.btn_MediaClear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_MediaClear.Location = new System.Drawing.Point(354, 4);
+            this.btn_MediaClear.Name = "btn_MediaClear";
+            this.btn_MediaClear.Size = new System.Drawing.Size(49, 27);
+            this.btn_MediaClear.TabIndex = 50;
+            this.btn_MediaClear.Text = "清空";
+            this.btn_MediaClear.UseVisualStyleBackColor = true;
+            this.btn_MediaClear.Click += new System.EventHandler(this.Btn_DataClear_Click);
             // 
             // MainForm
             // 
@@ -525,11 +570,9 @@
             this.Text = "媒体过滤工具";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_PluginCount)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.pnl_Templates.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -545,9 +588,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbx_SoccerType;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_ImportFile;
+        private System.Windows.Forms.Button btn_ImportMedia;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txt_CountPlugin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdBtn_ExportFile;
@@ -577,6 +619,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_SaveTemplate;
+        private System.Windows.Forms.Button btn_TemplateClear;
+        private System.Windows.Forms.Button btn_MediaClear;
+        private System.Windows.Forms.NumericUpDown nud_PluginCount;
     }
 }
 

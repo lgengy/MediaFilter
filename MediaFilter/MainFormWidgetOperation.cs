@@ -38,11 +38,20 @@ namespace MediaFilter
 
                 if (importDir)
                 {
+                    List<string> listIssue = new List<string>();
                     //导入的是目录的话直接添加
                     foreach (string dir in commonOpenFileDialog.FileNames)
                     {
                         lb_MediaFile.Items.Add(dir);
+                        listIssue.Add(Utils.FindFileNameInPath(dir).Substring(0, 7));
                     }
+
+                    cbx_IssueStart.Items.Clear();
+                    cbx_IssueEnd.Items.Clear();
+                    cbx_IssueStart.Items.AddRange(listIssue.ToArray());
+                    cbx_IssueEnd.Items.AddRange(listIssue.ToArray());
+                    cbx_IssueStart.SelectedIndex = 0;
+                    cbx_IssueEnd.SelectedIndex = listIssue.Count - 1;
                 }
                 else
                 {
@@ -54,6 +63,13 @@ namespace MediaFilter
                     listFile.Sort(new FileInfo_FileName_Sort());
                     foreach (FileInfo file in listFile)
                         lb_MediaFile.Items.Add(file.FullName);
+
+                    cbx_IssueStart.Items.Clear();
+                    cbx_IssueEnd.Items.Clear();
+                    cbx_IssueStart.Items.Add(Utils.FindFileNameInPath(listFile[0].FullName).Substring(0, 7));
+                    cbx_IssueEnd.Items.Add(Utils.FindFileNameInPath(listFile[0].FullName).Substring(0, 7));
+                    cbx_IssueStart.SelectedIndex = 0;
+                    cbx_IssueEnd.SelectedIndex = 0;
                 }
             }
         }
@@ -61,12 +77,13 @@ namespace MediaFilter
         private void Btn_ImportTemplate_Click(object sender, EventArgs e)
         {
             commonOpenFileDialog.Title = "请选择需要导入的过滤文件";
-            commonOpenFileDialog.IsFolderPicker = false; 
+            commonOpenFileDialog.IsFolderPicker = false;
             commonOpenFileDialog.Multiselect = true;
             commonOpenFileDialog.InitialDirectory = Application.StartupPath + "\\HisTempaltes";
 
             if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
+                if (!btn_ImportMedia.Enabled) btn_ImportMedia.Enabled = true;
                 lb_Template.Items.Clear();
                 foreach (string file in commonOpenFileDialog.FileNames.ToList())
                 {
@@ -77,20 +94,6 @@ namespace MediaFilter
         #endregion
 
         #region 设置区
-
-        private void Txt_CountPlugin_Leave(object sender, EventArgs e)
-        {
-            if (!Regex.IsMatch((sender as TextBox).Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("插件个数需要是正整数");
-                txt_CountPlugin.Focus();
-            }
-            else
-            {
-                Properties.Settings.Default.CountPlugin = Convert.ToInt32((sender as TextBox).Text);
-                Properties.Settings.Default.Save();
-            }
-        }
         #endregion
 
         #region 导出区
@@ -104,25 +107,28 @@ namespace MediaFilter
         private void Btn_Export_Click(object sender, EventArgs e)
         {
             if (lb_MediaFile.Items.Count == 0 || lb_Template.Items.Count == 0) return;
+            if (cbx_IssueEnd.Text.CompareTo(cbx_IssueStart.Text) < 0) { MessageBox.Show("期号范围选择错误"); return; }
 
             commonOpenFileDialog.Title = "请选择过滤文件保存位置";
             commonOpenFileDialog.IsFolderPicker = true;
             commonOpenFileDialog.Multiselect = false;
             commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ExportFilterLocation;
 
-            if(commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
                 Properties.Settings.Default.ExportFilterLocation = commonOpenFileDialog.FileName;
                 Properties.Settings.Default.Save();
 
+                frmInputDirName.initialDirName = saveDirName;
+                frmInputDirName.ShowDialog();
+
                 string saveDir;
                 if (exportDir)
                 {
-                    string dirName = Utils.FindFileNameInPath(lb_MediaFile.Items[0].ToString()).Split('_')[0] + "过滤条件单插件";
-                    saveDir = commonOpenFileDialog.FileName + "\\" + dirName;
+                    saveDir = commonOpenFileDialog.FileName + "\\" + saveDirName;
 
-                    if (Directory.Exists(saveDir) && MessageBox.Show("文件夹已存在，是否覆盖", "提示", MessageBoxButtons.YesNo) == DialogResult.No)
-                        return;
+                    if (string.IsNullOrEmpty(saveDirName)) return;
+                    if (Directory.Exists(saveDir) && MessageBox.Show("文件夹已存在，是否覆盖", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
 
                     Directory.CreateDirectory(saveDir);
                 }
@@ -134,10 +140,10 @@ namespace MediaFilter
                 List<string> list = new List<string>();
                 foreach (var item in lb_MediaFile.Items) list.Add(item.ToString());
 
-                if(Convert.ToInt32(txt_CountPlugin.Text) == 1)OnePluginMode(saveDir, list);
+                if (nud_PluginCount.Value == 1) OnePluginMode(saveDir, list);
                 else MultiPluginMode(saveDir, list);
             }
-            
+
         }
 
         private void OnePluginMode(string saveDir, List<string> listFile)
@@ -145,11 +151,14 @@ namespace MediaFilter
             if (isFileImport)
                 CreateFilterFileOnePlugin(saveDir, listFile);
             else
-                foreach(var item in lb_MediaFile.Items)
+                foreach (var item in lb_MediaFile.Items)
                 {
-                    List<string> files = Directory.GetFiles(item.ToString(), "*.lsm").ToList();
-                    files.Sort(new String_FileName_Sort());
-                    CreateFilterFileOnePlugin(saveDir, files);
+                    if(Utils.FindFileNameInPath(item.ToString()).Substring(0,7).CompareTo(cbx_IssueStart.Text) >= 0 && Utils.FindFileNameInPath(item.ToString()).Substring(0, 7).CompareTo(cbx_IssueEnd.Text) <= 0)
+                    {
+                        List<string> files = Directory.GetFiles(item.ToString(), "*.lsm").ToList();
+                        files.Sort(new String_FileName_Sort());
+                        CreateFilterFileOnePlugin(saveDir, files);
+                    }
                 }
         }
 
@@ -160,9 +169,12 @@ namespace MediaFilter
             else
                 foreach (var item in lb_MediaFile.Items)
                 {
-                    List<string> files = Directory.GetFiles(item.ToString(), "*.lsm").ToList();
-                    files.Sort(new String_FileName_Sort());
-                    CreateFilterFileMultiPlugin(saveDir, files);
+                    if (Utils.FindFileNameInPath(item.ToString()).Substring(0, 7).CompareTo(cbx_IssueStart.Text) >= 0 && Utils.FindFileNameInPath(item.ToString()).Substring(0, 7).CompareTo(cbx_IssueEnd.Text) <= 0)
+                    {
+                        List<string> files = Directory.GetFiles(item.ToString(), "*.lsm").ToList();
+                        files.Sort(new String_FileName_Sort());
+                        CreateFilterFileMultiPlugin(saveDir, files);
+                    }
                 }
         }
 
@@ -204,7 +216,7 @@ namespace MediaFilter
                         string content = srTemplate.ReadLine();
                         if (content.StartsWith("分布纵向"))
                         {
-                            if (++pluginCount > Convert.ToInt32(txt_CountPlugin.Text))
+                            if (++pluginCount > nud_PluginCount.Value)
                             {
                                 MessageBox.Show("输入插件个数小于模板中插件个数，请仔细检查");
                                 srTemplate.Close();
@@ -254,66 +266,64 @@ namespace MediaFilter
             int pluginCount = 0;//插件个数
             bool cover = false;//是否覆盖同名文件
 
-            if (isFileImport)
+            m = listFile.Count / Convert.ToInt32(nud_PluginCount.Value);
+
+            string saveName = saveDir + "\\" + Utils.FindFileNameInPath(listFile[0]).Split('_')[0] + $"过滤条件{nud_PluginCount.Value}插件.flt";
+
+            if (!cover && File.Exists(saveName) && MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
+            else cover = true;
+
+            StreamReader srTemplate = new StreamReader(lb_Template.Items[0].ToString(), Encoding.GetEncoding("GB2312"));
+            StreamWriter sw = new StreamWriter(saveName, false, srTemplate.CurrentEncoding);
+            int j = 0;
+            while (!srTemplate.EndOfStream)
             {
-                m = listFile.Count / Convert.ToInt32(txt_CountPlugin.Text);
-
-                string saveName = saveDir + "\\" + Utils.FindFileNameInPath(listFile[0]).Split('_')[0] + $"过滤条件{Convert.ToInt32(txt_CountPlugin.Text)}插件.flt";
-
-                if (!cover && File.Exists(saveName) && MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
-
-                StreamReader srTemplate = new StreamReader(lb_Template.Items[0].ToString(), Encoding.GetEncoding("GB2312"));
-                StreamWriter sw = new StreamWriter(saveName, false, srTemplate.CurrentEncoding);
-                int j = 0;
-                while (!srTemplate.EndOfStream)
+                string content = srTemplate.ReadLine();
+                if (content.StartsWith("分布纵向"))
                 {
-                    string content = srTemplate.ReadLine();
-                    if (content.StartsWith("分布纵向"))
+
+                    if (++pluginCount > nud_PluginCount.Value)
                     {
-
-                        if (++pluginCount > Convert.ToInt32(txt_CountPlugin.Text))
-                        {
-                            MessageBox.Show("输入插件个数小于模板中插件个数，请仔细检查");
-                            srTemplate.Close();
-                            sw.Close();
-                            return;
-                        }
-
-                        StringBuilder sbNewContent = new StringBuilder();
-                        //获取每一个文件期数后的后缀
-                        string issueSuffix = Regex.Split(content, @"\\" + Utils.Substring(content, "每", "共") + @"\\")[1].Split('\\')[0];
-                        sbNewContent.Append(content.Split('=')[0]).Append("=");
-
-                        for (int i = j; i < m * pluginCount; i++)
-                        {
-                            int issueCount = 0;//期数
-                            StreamReader srMedia = new StreamReader(listFile[i]);
-
-                            sbNewContent.Append(Utils.FindFileNameInPath(listFile[i]));
-                            while (!srMedia.EndOfStream)
-                            {
-                                string mediaContent = srMedia.ReadLine();
-                                if (mediaContent.StartsWith("Y"))
-                                {
-                                    issueCount++;
-                                    sbNewContent.Append("|").Append(mediaContent.Split('|')[2].Insert(1, ",").Insert(3, ","));
-                                }
-                            }
-                            srMedia.Close();
-                            sbNewContent.Append("\\" + issueCount + "\\").Append(issueSuffix + "\\");
-                        }
-                        sbNewContent.Append("#" + Regex.Split(content, @"\\#")[1] + "\\#" + Regex.Split(content, @"\\#")[2]);
-                        sw.WriteLine(sbNewContent);
-                        sw.Flush();
-                        j += m;
+                        MessageBox.Show("输入插件个数小于模板中插件个数，请仔细检查");
+                        srTemplate.Close();
+                        sw.Close();
+                        return;
                     }
-                    else
-                        sw.WriteLine(content);
-                }
 
-                sw.Close();
-                srTemplate.Close();
+                    StringBuilder sbNewContent = new StringBuilder();
+                    //获取每一个文件期数后的后缀
+                    string issueSuffix = Regex.Split(content, @"\\" + Utils.Substring(content, "每", "共") + @"\\")[1].Split('\\')[0];
+                    sbNewContent.Append(content.Split('=')[0]).Append("=");
+
+                    for (int i = j; i < m * pluginCount; i++)
+                    {
+                        int issueCount = 0;//期数
+                        StreamReader srMedia = new StreamReader(listFile[i]);
+
+                        sbNewContent.Append(Utils.FindFileNameInPath(listFile[i]));
+                        while (!srMedia.EndOfStream)
+                        {
+                            string mediaContent = srMedia.ReadLine();
+                            if (mediaContent.StartsWith("Y"))
+                            {
+                                issueCount++;
+                                sbNewContent.Append("|").Append(mediaContent.Split('|')[2].Insert(1, ",").Insert(3, ","));
+                            }
+                        }
+                        srMedia.Close();
+                        sbNewContent.Append("\\" + issueCount + "\\").Append(issueSuffix + "\\");
+                    }
+                    sbNewContent.Append("#" + Regex.Split(content, @"\\#")[1] + "\\#" + Regex.Split(content, @"\\#")[2]);
+                    sw.WriteLine(sbNewContent);
+                    sw.Flush();
+                    j += m;
+                }
+                else
+                    sw.WriteLine(content);
             }
+
+            sw.Close();
+            srTemplate.Close();
         }
         #endregion
     }
