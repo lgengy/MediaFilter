@@ -1,6 +1,7 @@
 ﻿using MediaFilter.SupplementWindow;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -16,11 +17,14 @@ namespace MediaFilter
         /// </summary>
         private bool exportDir = true;
         private bool isFileImport = true;//媒体导入的时候是以文件的形式导入的
-        private List<string> listFile = new List<string>();
         /// <summary>
         /// 以目录形式导出时要保存的目录名字
         /// </summary>
         private string saveDirName = "";
+        /// <summary>
+        /// 导出模式:0-横模式 1-纵模式
+        /// </summary>
+        private int exportMode = 0;
         private CommonOpenFileDialog commonOpenFileDialog = new CommonOpenFileDialog() { AllowNonFileSystemItems = true };
         private FrmInputDirName frmInputDirName = new FrmInputDirName();
 
@@ -48,6 +52,10 @@ namespace MediaFilter
         private void InitializeUI()
         {
             cbx_SoccerType.SelectedIndex = 0;
+            cbx_ExportMode.Items.Add(new DictionaryEntry(0, "横向"));
+            cbx_ExportMode.Items.Add(new DictionaryEntry(1, "纵向"));
+            cbx_ExportMode.DisplayMember = "value";
+            cbx_ExportMode.ValueMember = "key";
             cbx_ExportMode.SelectedIndex = 0;
 
             nud_PluginCount.Value = Properties.Settings.Default.CountPlugin;
@@ -134,6 +142,18 @@ namespace MediaFilter
         {
             if ((sender as Button).Name.Contains("Media")) lb_MediaFile.Items.Clear();
             else lb_Template.Items.Clear();
+        }
+
+        private void Cbx_ExportMode_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if ((sender as ComboBox).SelectedItem != null)
+                exportMode = Convert.ToInt32(((DictionaryEntry)(sender as ComboBox).SelectedItem).Key);
+        }
+
+        private void Nud_PluginCount_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.CountPlugin = Convert.ToInt32((sender as NumericUpDown).Value);
+            Properties.Settings.Default.Save();
         }
     }
 }

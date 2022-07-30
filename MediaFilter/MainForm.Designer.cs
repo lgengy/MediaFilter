@@ -207,6 +207,7 @@
             0,
             0,
             0});
+            this.nud_PluginCount.ValueChanged += new System.EventHandler(this.Nud_PluginCount_ValueChanged);
             // 
             // label5
             // 
@@ -243,16 +244,13 @@
             this.cbx_ExportMode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cbx_ExportMode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbx_ExportMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx_ExportMode.Enabled = false;
             this.cbx_ExportMode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbx_ExportMode.FormattingEnabled = true;
-            this.cbx_ExportMode.Items.AddRange(new object[] {
-            "横向",
-            "纵向"});
             this.cbx_ExportMode.Location = new System.Drawing.Point(282, 52);
             this.cbx_ExportMode.Name = "cbx_ExportMode";
             this.cbx_ExportMode.Size = new System.Drawing.Size(67, 24);
             this.cbx_ExportMode.TabIndex = 45;
+            this.cbx_ExportMode.SelectedValueChanged += new System.EventHandler(this.Cbx_ExportMode_SelectedValueChanged);
             // 
             // label2
             // 

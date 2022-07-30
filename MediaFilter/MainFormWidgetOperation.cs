@@ -106,76 +106,112 @@ namespace MediaFilter
 
         private void Btn_Export_Click(object sender, EventArgs e)
         {
-            if (lb_MediaFile.Items.Count == 0 || lb_Template.Items.Count == 0) return;
-            if (cbx_IssueEnd.Text.CompareTo(cbx_IssueStart.Text) < 0) { MessageBox.Show("期号范围选择错误"); return; }
-
-            commonOpenFileDialog.Title = "请选择过滤文件保存位置";
-            commonOpenFileDialog.IsFolderPicker = true;
-            commonOpenFileDialog.Multiselect = false;
-            commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ExportFilterLocation;
-
-            if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            try
             {
-                Properties.Settings.Default.ExportFilterLocation = commonOpenFileDialog.FileName;
-                Properties.Settings.Default.Save();
+                if (lb_MediaFile.Items.Count == 0 || lb_Template.Items.Count == 0) return;
+                if (cbx_IssueEnd.Text.CompareTo(cbx_IssueStart.Text) < 0) { MessageBox.Show("期号范围选择错误"); return; }
 
-                frmInputDirName.initialDirName = saveDirName;
-                frmInputDirName.ShowDialog();
+                commonOpenFileDialog.Title = "请选择过滤文件保存位置";
+                commonOpenFileDialog.IsFolderPicker = true;
+                commonOpenFileDialog.Multiselect = false;
+                commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ExportFilterLocation;
 
-                string saveDir;
-                if (exportDir)
+                if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
                 {
-                    saveDir = commonOpenFileDialog.FileName + "\\" + saveDirName;
+                    Properties.Settings.Default.ExportFilterLocation = commonOpenFileDialog.FileName;
+                    Properties.Settings.Default.Save();
 
-                    if (string.IsNullOrEmpty(saveDirName)) return;
-                    if (Directory.Exists(saveDir) && MessageBox.Show("文件夹已存在，是否覆盖", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                    string saveDir;
+                    if (exportDir)
+                    {
+                        frmInputDirName.initialDirName = saveDirName;
+                        frmInputDirName.ShowDialog();
 
-                    Directory.CreateDirectory(saveDir);
+                        saveDir = commonOpenFileDialog.FileName + "\\" + saveDirName;
+
+                        if (string.IsNullOrEmpty(saveDirName)) return;
+                        if (Directory.Exists(saveDir) && MessageBox.Show("文件夹已存在，是否覆盖", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
+
+                        Directory.CreateDirectory(saveDir);
+                    }
+                    else
+                    {
+                        saveDir = commonOpenFileDialog.FileName;
+                    }
+
+                    List<string> list = new List<string>();
+                    foreach (var item in lb_MediaFile.Items) list.Add(item.ToString());
+
+                    if (isFileImport)
+                    {
+                        list.Sort(new String_FileName_Sort());
+
+                        if (exportMode == 1)
+                        {
+                            list = CheckColumnMode(list);
+                            if (list.Count == 0) return;
+                        }
+
+                        if (nud_PluginCount.Value == 1) CreateFilterFileOnePlugin(saveDir, list);
+                        else CreateFilterFileMultiPlugin(saveDir, list);
+                    }
+                    else
+                    {
+                        foreach (string fullPath in list)
+                        {
+                            if (Utils.FindFileNameInPath(fullPath).Substring(0, 7).CompareTo(cbx_IssueStart.Text) >= 0 && Utils.FindFileNameInPath(fullPath).Substring(0, 7).CompareTo(cbx_IssueEnd.Text) <= 0)
+                            {
+                                List<string> files = Directory.GetFiles(fullPath, "*.lsm").ToList();
+                                files.Sort(new String_FileName_Sort());
+
+                                if (exportMode == 1)
+                                {
+                                    files = CheckColumnMode(files);
+                                    if (files.Count == 0) return;
+                                }
+
+                                if (nud_PluginCount.Value == 1) CreateFilterFileOnePlugin(saveDir, files);
+                                else CreateFilterFileMultiPlugin(saveDir, files);
+                            }
+                        }
+
+                        MessageBox.Show("导出成功");
+                    }
                 }
-                else
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("导出失败，" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 检查文件是否满足纵模式导出
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private List<string> CheckColumnMode(List<string> list)
+        {
+            List<string> listRe = new List<string>();
+
+            //纵模式下通过开根后是否有小数点判断结果是否为整数，进而判断文件数是否构成正方形
+            if (Math.Sqrt(list.Count).ToString().Split('.').Length == 1)
+            {
+                int sideLength = Convert.ToInt32(Math.Sqrt(list.Count));
+                for (int i = 0; i < sideLength; i++)
                 {
-                    saveDir = commonOpenFileDialog.FileName;
+                    for (int j = i; j < (sideLength - 1) * sideLength + i + 1; j += sideLength)
+                    {
+                        listRe.Add(list[j]);
+                    }
                 }
-
-                List<string> list = new List<string>();
-                foreach (var item in lb_MediaFile.Items) list.Add(item.ToString());
-
-                if (nud_PluginCount.Value == 1) OnePluginMode(saveDir, list);
-                else MultiPluginMode(saveDir, list);
+            }
+            else
+            {
+                MessageBox.Show("导入文件不构成正方形");
             }
 
-        }
-
-        private void OnePluginMode(string saveDir, List<string> listFile)
-        {
-            if (isFileImport)
-                CreateFilterFileOnePlugin(saveDir, listFile);
-            else
-                foreach (var item in lb_MediaFile.Items)
-                {
-                    if(Utils.FindFileNameInPath(item.ToString()).Substring(0,7).CompareTo(cbx_IssueStart.Text) >= 0 && Utils.FindFileNameInPath(item.ToString()).Substring(0, 7).CompareTo(cbx_IssueEnd.Text) <= 0)
-                    {
-                        List<string> files = Directory.GetFiles(item.ToString(), "*.lsm").ToList();
-                        files.Sort(new String_FileName_Sort());
-                        CreateFilterFileOnePlugin(saveDir, files);
-                    }
-                }
-        }
-
-        private void MultiPluginMode(string saveDir, List<string> listFile)
-        {
-            if (isFileImport)
-                CreateFilterFileMultiPlugin(saveDir, listFile);
-            else
-                foreach (var item in lb_MediaFile.Items)
-                {
-                    if (Utils.FindFileNameInPath(item.ToString()).Substring(0, 7).CompareTo(cbx_IssueStart.Text) >= 0 && Utils.FindFileNameInPath(item.ToString()).Substring(0, 7).CompareTo(cbx_IssueEnd.Text) <= 0)
-                    {
-                        List<string> files = Directory.GetFiles(item.ToString(), "*.lsm").ToList();
-                        files.Sort(new String_FileName_Sort());
-                        CreateFilterFileMultiPlugin(saveDir, files);
-                    }
-                }
+            return listRe;
         }
 
         private void CreateFilterFileOnePlugin(string saveDir, List<string> listFile)
@@ -186,13 +222,24 @@ namespace MediaFilter
             int fileCount = 0;//生成文件个数
             bool cover = false;//是否覆盖同名文件
 
-            foreach (string item in listFile)
+            //计算横模式升数
+            if (exportMode == 0)
             {
-                if (!name.Equals(Utils.FindFileNameInPath(item).Split('_')[2]))
+                foreach (string item in listFile)
                 {
-                    n++;
-                    name = Utils.FindFileNameInPath(item).Split('_')[2];
+                    if (!name.Equals(Utils.FindFileNameInPath(item).Split('_')[2]))
+                    {
+                        n++;
+                        name = Utils.FindFileNameInPath(item).Split('_')[2];
+                    }
                 }
+            }
+            //计算纵模式升数
+            if (exportMode == 1)
+            {
+                //因为纵模式是正方形，那么各升的文件数是相同的，因此只要计算文件中某一升文件的数量，就可知道文件里的升数
+                string oneIssue = Utils.FindFileNameInPath(listFile[0]).Split('_')[2];
+                n = listFile.Where(item => Utils.FindFileNameInPath(item).Split('_')[2].Equals(oneIssue)).Count();
             }
 
             //遍历媒体文件，形成新的过滤文件
