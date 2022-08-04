@@ -26,12 +26,12 @@ namespace MediaFilter.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int CountPlugin {
+        public int PluginCount {
             get {
-                return ((int)(this["CountPlugin"]));
+                return ((int)(this["PluginCount"]));
             }
             set {
-                this["CountPlugin"] = value;
+                this["PluginCount"] = value;
             }
         }
         
@@ -56,6 +56,78 @@ namespace MediaFilter.Properties {
             }
             set {
                 this["ExportFilterLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        public string ImportDividePai3Location {
+            get {
+                return ((string)(this["ImportDividePai3Location"]));
+            }
+            set {
+                this["ImportDividePai3Location"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ToleranceStart_MediaDivide_Pai3 {
+            get {
+                return ((int)(this["ToleranceStart_MediaDivide_Pai3"]));
+            }
+            set {
+                this["ToleranceStart_MediaDivide_Pai3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int ToleranceEnd_MediaDivide_Pai3 {
+            get {
+                return ((int)(this["ToleranceEnd_MediaDivide_Pai3"]));
+            }
+            set {
+                this["ToleranceEnd_MediaDivide_Pai3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int IssueCount_MediaDivide_Pai3 {
+            get {
+                return ((int)(this["IssueCount_MediaDivide_Pai3"]));
+            }
+            set {
+                this["IssueCount_MediaDivide_Pai3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int FileCount_MediaDivide_Pai3 {
+            get {
+                return ((int)(this["FileCount_MediaDivide_Pai3"]));
+            }
+            set {
+                this["FileCount_MediaDivide_Pai3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        public string ExportDivideFileLocation {
+            get {
+                return ((string)(this["ExportDivideFileLocation"]));
+            }
+            set {
+                this["ExportDivideFileLocation"] = value;
             }
         }
     }

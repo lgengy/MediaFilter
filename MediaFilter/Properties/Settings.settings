@@ -2,13 +2,31 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MediaFilter.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="CountPlugin" Type="System.Int32" Scope="User">
+    <Setting Name="PluginCount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="ImportMediaLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">D:\</Value>
     </Setting>
     <Setting Name="ExportFilterLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\</Value>
+    </Setting>
+    <Setting Name="ImportDividePai3Location" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\</Value>
+    </Setting>
+    <Setting Name="ToleranceStart_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ToleranceEnd_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="IssueCount_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="FileCount_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ExportDivideFileLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
     </Setting>
   </Settings>

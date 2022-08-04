@@ -66,6 +66,61 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_MediaClear = new System.Windows.Forms.Button();
+            this.pnl_MediaDivide_Pai3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cbx_SoccerType_MediaDivide_Pai3 = new System.Windows.Forms.ComboBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdb_ImportFile_MediaDivide_Pai3 = new System.Windows.Forms.RadioButton();
+            this.rdb_ImportDir_MediaDivide_Pai3 = new System.Windows.Forms.RadioButton();
+            this.btn_Clear_MediaDivide_Pai3 = new System.Windows.Forms.Button();
+            this.btn_Import_MediaDivide_Pai3 = new System.Windows.Forms.Button();
+            this.btn_Delete_MediaDivide_Pai3 = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.cbx_IssueStart_MediaDivide_pai3 = new System.Windows.Forms.ComboBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cbx_IssueEnd_MediaDivide_pai3 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.lb_MediaDivide = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdb_ExportFile_MediaDivide_Pai3 = new System.Windows.Forms.RadioButton();
+            this.rdb_ExportDir_MediaDivide_Pai3 = new System.Windows.Forms.RadioButton();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdb_FileGap2 = new System.Windows.Forms.RadioButton();
+            this.rdb_FileGap3 = new System.Windows.Forms.RadioButton();
+            this.rdb_FileGap0 = new System.Windows.Forms.RadioButton();
+            this.rdb_FileGap5 = new System.Windows.Forms.RadioButton();
+            this.rdb_FileGap4 = new System.Windows.Forms.RadioButton();
+            this.rdb_FileGap1 = new System.Windows.Forms.RadioButton();
+            this.rdb_FileGap6 = new System.Windows.Forms.RadioButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.nud_ToleranceStart_MediaDivide_Pai3 = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.nud_ToleranceEnd_MediaDivide_Pai3 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.nud_IssueCount_MediaDivide_Pai3 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.nud_FileCount_MediaDivide_Pai3 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.rdb_ExportZBB = new System.Windows.Forms.RadioButton();
+            this.rdb_ExportZCB = new System.Windows.Forms.RadioButton();
+            this.btn_Export_MediaDivide_Pai3 = new System.Windows.Forms.Button();
+            this.pnl_Pai3 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_PluginCount)).BeginInit();
@@ -76,6 +131,31 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.pnl_MediaDivide_Pai3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ToleranceStart_MediaDivide_Pai3)).BeginInit();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ToleranceEnd_MediaDivide_Pai3)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_IssueCount_MediaDivide_Pai3)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_FileCount_MediaDivide_Pai3)).BeginInit();
+            this.panel14.SuspendLayout();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.pnl_Pai3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,7 +166,7 @@
             this.groupBox1.Controls.Add(this.cbx_SoccerType);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(0, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(269, 83);
             this.groupBox1.TabIndex = 43;
@@ -120,12 +200,11 @@
             this.cbx_SoccerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_SoccerType.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbx_SoccerType.FormattingEnabled = true;
-            this.cbx_SoccerType.Items.AddRange(new object[] {
-            "排三"});
             this.cbx_SoccerType.Location = new System.Drawing.Point(98, 19);
             this.cbx_SoccerType.Name = "cbx_SoccerType";
             this.cbx_SoccerType.Size = new System.Drawing.Size(95, 24);
             this.cbx_SoccerType.TabIndex = 44;
+            this.cbx_SoccerType.SelectedValueChanged += new System.EventHandler(this.Cbx_SoccerType_SelectedValueChanged);
             // 
             // label3
             // 
@@ -178,7 +257,7 @@
             this.groupBox2.Controls.Add(this.nud_PluginCount);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(276, 2);
+            this.groupBox2.Location = new System.Drawing.Point(275, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(192, 83);
             this.groupBox2.TabIndex = 46;
@@ -207,7 +286,7 @@
             0,
             0,
             0});
-            this.nud_PluginCount.ValueChanged += new System.EventHandler(this.Nud_PluginCount_ValueChanged);
+            this.nud_PluginCount.ValueChanged += new System.EventHandler(this.Nud_ValueChanged);
             // 
             // label5
             // 
@@ -231,7 +310,7 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cbx_IssueEnd);
             this.groupBox3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(472, 2);
+            this.groupBox3.Location = new System.Drawing.Point(473, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(465, 83);
             this.groupBox3.TabIndex = 47;
@@ -396,7 +475,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btn_SaveTemplate, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_TemplateClear, 2, 0);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(472, 89);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(474, 90);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -473,7 +552,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btn_MediaClear, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_ImportMedia, 1, 0);
             this.tableLayoutPanel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 89);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 90);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -552,16 +631,827 @@
             this.btn_MediaClear.UseVisualStyleBackColor = true;
             this.btn_MediaClear.Click += new System.EventHandler(this.Btn_DataClear_Click);
             // 
+            // pnl_MediaDivide_Pai3
+            // 
+            this.pnl_MediaDivide_Pai3.Controls.Add(this.tableLayoutPanel3);
+            this.pnl_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pnl_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.pnl_MediaDivide_Pai3.Name = "pnl_MediaDivide_Pai3";
+            this.pnl_MediaDivide_Pai3.Size = new System.Drawing.Size(941, 430);
+            this.pnl_MediaDivide_Pai3.TabIndex = 4;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 24;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.166667F));
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel4, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel5, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_Clear_MediaDivide_Pai3, 10, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_Import_MediaDivide_Pai3, 14, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_Delete_MediaDivide_Pai3, 11, 0);
+            this.tableLayoutPanel3.Controls.Add(this.panel7, 16, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel7, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(941, 430);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label6, 2);
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Margin = new System.Windows.Forms.Padding(0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 43);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "过滤类型：";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.panel4, 3);
+            this.panel4.Controls.Add(this.cbx_SoccerType_MediaDivide_Pai3);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(78, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(117, 43);
+            this.panel4.TabIndex = 46;
+            // 
+            // cbx_SoccerType_MediaDivide_Pai3
+            // 
+            this.cbx_SoccerType_MediaDivide_Pai3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_SoccerType_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbx_SoccerType_MediaDivide_Pai3.FormattingEnabled = true;
+            this.cbx_SoccerType_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 9);
+            this.cbx_SoccerType_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.cbx_SoccerType_MediaDivide_Pai3.Name = "cbx_SoccerType_MediaDivide_Pai3";
+            this.cbx_SoccerType_MediaDivide_Pai3.Size = new System.Drawing.Size(117, 24);
+            this.cbx_SoccerType_MediaDivide_Pai3.TabIndex = 45;
+            this.cbx_SoccerType_MediaDivide_Pai3.SelectedValueChanged += new System.EventHandler(this.Cbx_SoccerType_SelectedValueChanged);
+            // 
+            // panel5
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.panel5, 5);
+            this.panel5.Controls.Add(this.tableLayoutPanel4);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(195, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(195, 43);
+            this.panel5.TabIndex = 48;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.rdb_ImportFile_MediaDivide_Pai3, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.rdb_ImportDir_MediaDivide_Pai3, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(195, 43);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // rdb_ImportFile_MediaDivide_Pai3
+            // 
+            this.rdb_ImportFile_MediaDivide_Pai3.AutoSize = true;
+            this.rdb_ImportFile_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_ImportFile_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdb_ImportFile_MediaDivide_Pai3.Location = new System.Drawing.Point(97, 0);
+            this.rdb_ImportFile_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.rdb_ImportFile_MediaDivide_Pai3.Name = "rdb_ImportFile_MediaDivide_Pai3";
+            this.rdb_ImportFile_MediaDivide_Pai3.Size = new System.Drawing.Size(98, 43);
+            this.rdb_ImportFile_MediaDivide_Pai3.TabIndex = 1;
+            this.rdb_ImportFile_MediaDivide_Pai3.Text = "导入文件";
+            this.rdb_ImportFile_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            this.rdb_ImportFile_MediaDivide_Pai3.CheckedChanged += new System.EventHandler(this.Rdb_ImportFile_CheckedChanged);
+            // 
+            // rdb_ImportDir_MediaDivide_Pai3
+            // 
+            this.rdb_ImportDir_MediaDivide_Pai3.AutoSize = true;
+            this.rdb_ImportDir_MediaDivide_Pai3.Checked = true;
+            this.rdb_ImportDir_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_ImportDir_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdb_ImportDir_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.rdb_ImportDir_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.rdb_ImportDir_MediaDivide_Pai3.Name = "rdb_ImportDir_MediaDivide_Pai3";
+            this.rdb_ImportDir_MediaDivide_Pai3.Size = new System.Drawing.Size(97, 43);
+            this.rdb_ImportDir_MediaDivide_Pai3.TabIndex = 0;
+            this.rdb_ImportDir_MediaDivide_Pai3.TabStop = true;
+            this.rdb_ImportDir_MediaDivide_Pai3.Text = "导入目录";
+            this.rdb_ImportDir_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            // 
+            // btn_Clear_MediaDivide_Pai3
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.btn_Clear_MediaDivide_Pai3, 2);
+            this.btn_Clear_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Clear_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Clear_MediaDivide_Pai3.Location = new System.Drawing.Point(393, 3);
+            this.btn_Clear_MediaDivide_Pai3.Name = "btn_Clear_MediaDivide_Pai3";
+            this.btn_Clear_MediaDivide_Pai3.Size = new System.Drawing.Size(72, 37);
+            this.btn_Clear_MediaDivide_Pai3.TabIndex = 47;
+            this.btn_Clear_MediaDivide_Pai3.Text = "清空";
+            this.btn_Clear_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            this.btn_Clear_MediaDivide_Pai3.Click += new System.EventHandler(this.Btn_DataClear_Click);
+            // 
+            // btn_Import_MediaDivide_Pai3
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.btn_Import_MediaDivide_Pai3, 2);
+            this.btn_Import_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Import_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Import_MediaDivide_Pai3.Location = new System.Drawing.Point(549, 3);
+            this.btn_Import_MediaDivide_Pai3.Name = "btn_Import_MediaDivide_Pai3";
+            this.btn_Import_MediaDivide_Pai3.Size = new System.Drawing.Size(72, 37);
+            this.btn_Import_MediaDivide_Pai3.TabIndex = 49;
+            this.btn_Import_MediaDivide_Pai3.Text = "导入";
+            this.btn_Import_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            this.btn_Import_MediaDivide_Pai3.Click += new System.EventHandler(this.Btn_Import_MediaDivide_Pai3_Click);
+            // 
+            // btn_Delete_MediaDivide_Pai3
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.btn_Delete_MediaDivide_Pai3, 2);
+            this.btn_Delete_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Delete_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_Delete_MediaDivide_Pai3.Location = new System.Drawing.Point(471, 3);
+            this.btn_Delete_MediaDivide_Pai3.Name = "btn_Delete_MediaDivide_Pai3";
+            this.btn_Delete_MediaDivide_Pai3.Size = new System.Drawing.Size(72, 37);
+            this.btn_Delete_MediaDivide_Pai3.TabIndex = 50;
+            this.btn_Delete_MediaDivide_Pai3.Text = "删除";
+            this.btn_Delete_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            this.btn_Delete_MediaDivide_Pai3.Click += new System.EventHandler(this.DeleteTip);
+            // 
+            // panel7
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.panel7, 8);
+            this.panel7.Controls.Add(this.tableLayoutPanel6);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(624, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(317, 43);
+            this.panel7.TabIndex = 52;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 4;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel6.Controls.Add(this.label9, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel9, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label10, 2, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(317, 43);
+            this.tableLayoutPanel6.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(3, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 43);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "期号：";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.cbx_IssueStart_MediaDivide_pai3);
+            this.panel8.Location = new System.Drawing.Point(63, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(110, 43);
+            this.panel8.TabIndex = 1;
+            // 
+            // cbx_IssueStart_MediaDivide_pai3
+            // 
+            this.cbx_IssueStart_MediaDivide_pai3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_IssueStart_MediaDivide_pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbx_IssueStart_MediaDivide_pai3.FormattingEnabled = true;
+            this.cbx_IssueStart_MediaDivide_pai3.Items.AddRange(new object[] {
+            "排三媒体分割"});
+            this.cbx_IssueStart_MediaDivide_pai3.Location = new System.Drawing.Point(0, 9);
+            this.cbx_IssueStart_MediaDivide_pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.cbx_IssueStart_MediaDivide_pai3.Name = "cbx_IssueStart_MediaDivide_pai3";
+            this.cbx_IssueStart_MediaDivide_pai3.Size = new System.Drawing.Size(110, 24);
+            this.cbx_IssueStart_MediaDivide_pai3.TabIndex = 46;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.cbx_IssueEnd_MediaDivide_pai3);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(204, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(113, 43);
+            this.panel9.TabIndex = 2;
+            // 
+            // cbx_IssueEnd_MediaDivide_pai3
+            // 
+            this.cbx_IssueEnd_MediaDivide_pai3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx_IssueEnd_MediaDivide_pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cbx_IssueEnd_MediaDivide_pai3.FormattingEnabled = true;
+            this.cbx_IssueEnd_MediaDivide_pai3.Items.AddRange(new object[] {
+            "排三媒体分割"});
+            this.cbx_IssueEnd_MediaDivide_pai3.Location = new System.Drawing.Point(0, 9);
+            this.cbx_IssueEnd_MediaDivide_pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.cbx_IssueEnd_MediaDivide_pai3.Name = "cbx_IssueEnd_MediaDivide_pai3";
+            this.cbx_IssueEnd_MediaDivide_pai3.Size = new System.Drawing.Size(113, 24);
+            this.cbx_IssueEnd_MediaDivide_pai3.TabIndex = 46;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Location = new System.Drawing.Point(176, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(25, 43);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "至";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel3.SetColumnSpan(this.tableLayoutPanel7, 24);
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.lb_MediaDivide, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 43);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(941, 387);
+            this.tableLayoutPanel7.TabIndex = 53;
+            // 
+            // lb_MediaDivide
+            // 
+            this.lb_MediaDivide.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lb_MediaDivide.FormattingEnabled = true;
+            this.lb_MediaDivide.HorizontalScrollbar = true;
+            this.lb_MediaDivide.ItemHeight = 16;
+            this.lb_MediaDivide.Location = new System.Drawing.Point(0, 0);
+            this.lb_MediaDivide.Margin = new System.Windows.Forms.Padding(0);
+            this.lb_MediaDivide.Name = "lb_MediaDivide";
+            this.lb_MediaDivide.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lb_MediaDivide.Size = new System.Drawing.Size(470, 387);
+            this.lb_MediaDivide.TabIndex = 0;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 12;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.Controls.Add(this.label11, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.panel6, 1, 6);
+            this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.label15, 1, 4);
+            this.tableLayoutPanel8.Controls.Add(this.panel12, 2, 4);
+            this.tableLayoutPanel8.Controls.Add(this.label16, 4, 4);
+            this.tableLayoutPanel8.Controls.Add(this.panel13, 5, 4);
+            this.tableLayoutPanel8.Controls.Add(this.label12, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel10, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.label13, 3, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel11, 6, 2);
+            this.tableLayoutPanel8.Controls.Add(this.label14, 8, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel14, 1, 8);
+            this.tableLayoutPanel8.Controls.Add(this.btn_Export_MediaDivide_Pai3, 4, 10);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(470, 0);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 12;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(471, 387);
+            this.tableLayoutPanel8.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.tableLayoutPanel8.SetColumnSpan(this.label11, 2);
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Location = new System.Drawing.Point(42, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 32);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "隔期：";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel6, 8);
+            this.panel6.Controls.Add(this.tableLayoutPanel5);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(39, 192);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(312, 32);
+            this.panel6.TabIndex = 51;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.rdb_ExportFile_MediaDivide_Pai3, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.rdb_ExportDir_MediaDivide_Pai3, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(312, 32);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // rdb_ExportFile_MediaDivide_Pai3
+            // 
+            this.rdb_ExportFile_MediaDivide_Pai3.AutoSize = true;
+            this.rdb_ExportFile_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_ExportFile_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdb_ExportFile_MediaDivide_Pai3.Location = new System.Drawing.Point(156, 0);
+            this.rdb_ExportFile_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.rdb_ExportFile_MediaDivide_Pai3.Name = "rdb_ExportFile_MediaDivide_Pai3";
+            this.rdb_ExportFile_MediaDivide_Pai3.Size = new System.Drawing.Size(156, 32);
+            this.rdb_ExportFile_MediaDivide_Pai3.TabIndex = 1;
+            this.rdb_ExportFile_MediaDivide_Pai3.Text = "导出文件";
+            this.rdb_ExportFile_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            // 
+            // rdb_ExportDir_MediaDivide_Pai3
+            // 
+            this.rdb_ExportDir_MediaDivide_Pai3.AutoSize = true;
+            this.rdb_ExportDir_MediaDivide_Pai3.Checked = true;
+            this.rdb_ExportDir_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_ExportDir_MediaDivide_Pai3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdb_ExportDir_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.rdb_ExportDir_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.rdb_ExportDir_MediaDivide_Pai3.Name = "rdb_ExportDir_MediaDivide_Pai3";
+            this.rdb_ExportDir_MediaDivide_Pai3.Size = new System.Drawing.Size(156, 32);
+            this.rdb_ExportDir_MediaDivide_Pai3.TabIndex = 0;
+            this.rdb_ExportDir_MediaDivide_Pai3.TabStop = true;
+            this.rdb_ExportDir_MediaDivide_Pai3.Text = "导出目录";
+            this.rdb_ExportDir_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            this.rdb_ExportDir_MediaDivide_Pai3.CheckedChanged += new System.EventHandler(this.RdBtn_ExportDirectory_CheckedChanged);
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 7;
+            this.tableLayoutPanel8.SetColumnSpan(this.tableLayoutPanel9, 9);
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap2, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap3, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap0, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap5, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap4, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap1, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.rdb_FileGap6, 6, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(117, 0);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(354, 32);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // rdb_FileGap2
+            // 
+            this.rdb_FileGap2.AutoSize = true;
+            this.rdb_FileGap2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap2.Location = new System.Drawing.Point(103, 3);
+            this.rdb_FileGap2.Name = "rdb_FileGap2";
+            this.rdb_FileGap2.Size = new System.Drawing.Size(44, 26);
+            this.rdb_FileGap2.TabIndex = 5;
+            this.rdb_FileGap2.Text = "2";
+            this.rdb_FileGap2.UseVisualStyleBackColor = true;
+            this.rdb_FileGap2.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // rdb_FileGap3
+            // 
+            this.rdb_FileGap3.AutoSize = true;
+            this.rdb_FileGap3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap3.Location = new System.Drawing.Point(153, 3);
+            this.rdb_FileGap3.Name = "rdb_FileGap3";
+            this.rdb_FileGap3.Size = new System.Drawing.Size(44, 26);
+            this.rdb_FileGap3.TabIndex = 4;
+            this.rdb_FileGap3.Text = "3";
+            this.rdb_FileGap3.UseVisualStyleBackColor = true;
+            this.rdb_FileGap3.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // rdb_FileGap0
+            // 
+            this.rdb_FileGap0.AutoSize = true;
+            this.rdb_FileGap0.Checked = true;
+            this.rdb_FileGap0.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap0.Location = new System.Drawing.Point(3, 3);
+            this.rdb_FileGap0.Name = "rdb_FileGap0";
+            this.rdb_FileGap0.Size = new System.Drawing.Size(44, 26);
+            this.rdb_FileGap0.TabIndex = 3;
+            this.rdb_FileGap0.TabStop = true;
+            this.rdb_FileGap0.Text = "0";
+            this.rdb_FileGap0.UseVisualStyleBackColor = true;
+            this.rdb_FileGap0.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // rdb_FileGap5
+            // 
+            this.rdb_FileGap5.AutoSize = true;
+            this.rdb_FileGap5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap5.Location = new System.Drawing.Point(253, 3);
+            this.rdb_FileGap5.Name = "rdb_FileGap5";
+            this.rdb_FileGap5.Size = new System.Drawing.Size(44, 26);
+            this.rdb_FileGap5.TabIndex = 2;
+            this.rdb_FileGap5.Text = "5";
+            this.rdb_FileGap5.UseVisualStyleBackColor = true;
+            this.rdb_FileGap5.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // rdb_FileGap4
+            // 
+            this.rdb_FileGap4.AutoSize = true;
+            this.rdb_FileGap4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap4.Location = new System.Drawing.Point(203, 3);
+            this.rdb_FileGap4.Name = "rdb_FileGap4";
+            this.rdb_FileGap4.Size = new System.Drawing.Size(44, 26);
+            this.rdb_FileGap4.TabIndex = 1;
+            this.rdb_FileGap4.Text = "4";
+            this.rdb_FileGap4.UseVisualStyleBackColor = true;
+            this.rdb_FileGap4.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // rdb_FileGap1
+            // 
+            this.rdb_FileGap1.AutoSize = true;
+            this.rdb_FileGap1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap1.Location = new System.Drawing.Point(53, 3);
+            this.rdb_FileGap1.Name = "rdb_FileGap1";
+            this.rdb_FileGap1.Size = new System.Drawing.Size(44, 26);
+            this.rdb_FileGap1.TabIndex = 0;
+            this.rdb_FileGap1.Text = "1";
+            this.rdb_FileGap1.UseVisualStyleBackColor = true;
+            this.rdb_FileGap1.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // rdb_FileGap6
+            // 
+            this.rdb_FileGap6.AutoSize = true;
+            this.rdb_FileGap6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_FileGap6.Location = new System.Drawing.Point(303, 3);
+            this.rdb_FileGap6.Name = "rdb_FileGap6";
+            this.rdb_FileGap6.Size = new System.Drawing.Size(48, 26);
+            this.rdb_FileGap6.TabIndex = 6;
+            this.rdb_FileGap6.TabStop = true;
+            this.rdb_FileGap6.Text = "6";
+            this.rdb_FileGap6.UseVisualStyleBackColor = true;
+            this.rdb_FileGap6.CheckedChanged += new System.EventHandler(this.Rdb_FileGap_CheckedChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.tableLayoutPanel8.SetColumnSpan(this.label15, 2);
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Location = new System.Drawing.Point(42, 128);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 32);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "容错：";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel12
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel12, 2);
+            this.panel12.Controls.Add(this.nud_ToleranceStart_MediaDivide_Pai3);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(117, 128);
+            this.panel12.Margin = new System.Windows.Forms.Padding(0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(78, 32);
+            this.panel12.TabIndex = 9;
+            // 
+            // nud_ToleranceStart_MediaDivide_Pai3
+            // 
+            this.nud_ToleranceStart_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_ToleranceStart_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.nud_ToleranceStart_MediaDivide_Pai3.Name = "nud_ToleranceStart_MediaDivide_Pai3";
+            this.nud_ToleranceStart_MediaDivide_Pai3.Size = new System.Drawing.Size(78, 26);
+            this.nud_ToleranceStart_MediaDivide_Pai3.TabIndex = 3;
+            this.nud_ToleranceStart_MediaDivide_Pai3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nud_ToleranceStart_MediaDivide_Pai3.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.nud_ToleranceStart_MediaDivide_Pai3.ValueChanged += new System.EventHandler(this.Nud_ValueChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Location = new System.Drawing.Point(198, 128);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(33, 32);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "-";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel13
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel13, 2);
+            this.panel13.Controls.Add(this.nud_ToleranceEnd_MediaDivide_Pai3);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(234, 128);
+            this.panel13.Margin = new System.Windows.Forms.Padding(0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(78, 32);
+            this.panel13.TabIndex = 11;
+            // 
+            // nud_ToleranceEnd_MediaDivide_Pai3
+            // 
+            this.nud_ToleranceEnd_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_ToleranceEnd_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.nud_ToleranceEnd_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.nud_ToleranceEnd_MediaDivide_Pai3.Name = "nud_ToleranceEnd_MediaDivide_Pai3";
+            this.nud_ToleranceEnd_MediaDivide_Pai3.Size = new System.Drawing.Size(78, 26);
+            this.nud_ToleranceEnd_MediaDivide_Pai3.TabIndex = 3;
+            this.nud_ToleranceEnd_MediaDivide_Pai3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nud_ToleranceEnd_MediaDivide_Pai3.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.nud_ToleranceEnd_MediaDivide_Pai3.ValueChanged += new System.EventHandler(this.Nud_ValueChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(42, 64);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 32);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "每";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel10
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel10, 2);
+            this.panel10.Controls.Add(this.nud_IssueCount_MediaDivide_Pai3);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(78, 64);
+            this.panel10.Margin = new System.Windows.Forms.Padding(0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(78, 32);
+            this.panel10.TabIndex = 4;
+            // 
+            // nud_IssueCount_MediaDivide_Pai3
+            // 
+            this.nud_IssueCount_MediaDivide_Pai3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.nud_IssueCount_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_IssueCount_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.nud_IssueCount_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.nud_IssueCount_MediaDivide_Pai3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_IssueCount_MediaDivide_Pai3.Name = "nud_IssueCount_MediaDivide_Pai3";
+            this.nud_IssueCount_MediaDivide_Pai3.Size = new System.Drawing.Size(78, 26);
+            this.nud_IssueCount_MediaDivide_Pai3.TabIndex = 3;
+            this.nud_IssueCount_MediaDivide_Pai3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nud_IssueCount_MediaDivide_Pai3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_IssueCount_MediaDivide_Pai3.ValueChanged += new System.EventHandler(this.Nud_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.tableLayoutPanel8.SetColumnSpan(this.label13, 3);
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(159, 64);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(111, 32);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "个文件，共";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel11, 2);
+            this.panel11.Controls.Add(this.nud_FileCount_MediaDivide_Pai3);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(273, 64);
+            this.panel11.Margin = new System.Windows.Forms.Padding(0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(78, 32);
+            this.panel11.TabIndex = 6;
+            // 
+            // nud_FileCount_MediaDivide_Pai3
+            // 
+            this.nud_FileCount_MediaDivide_Pai3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.nud_FileCount_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nud_FileCount_MediaDivide_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.nud_FileCount_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.nud_FileCount_MediaDivide_Pai3.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nud_FileCount_MediaDivide_Pai3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_FileCount_MediaDivide_Pai3.Name = "nud_FileCount_MediaDivide_Pai3";
+            this.nud_FileCount_MediaDivide_Pai3.Size = new System.Drawing.Size(78, 26);
+            this.nud_FileCount_MediaDivide_Pai3.TabIndex = 3;
+            this.nud_FileCount_MediaDivide_Pai3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nud_FileCount_MediaDivide_Pai3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_FileCount_MediaDivide_Pai3.ValueChanged += new System.EventHandler(this.Nud_ValueChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.tableLayoutPanel8.SetColumnSpan(this.label14, 2);
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Location = new System.Drawing.Point(354, 64);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 32);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "个文件";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel14
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel14, 8);
+            this.panel14.Controls.Add(this.tableLayoutPanel10);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(39, 256);
+            this.panel14.Margin = new System.Windows.Forms.Padding(0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(312, 32);
+            this.panel14.TabIndex = 52;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.rdb_ExportZBB, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.rdb_ExportZCB, 0, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(312, 32);
+            this.tableLayoutPanel10.TabIndex = 0;
+            // 
+            // rdb_ExportZBB
+            // 
+            this.rdb_ExportZBB.AutoSize = true;
+            this.rdb_ExportZBB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_ExportZBB.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdb_ExportZBB.Location = new System.Drawing.Point(156, 0);
+            this.rdb_ExportZBB.Margin = new System.Windows.Forms.Padding(0);
+            this.rdb_ExportZBB.Name = "rdb_ExportZBB";
+            this.rdb_ExportZBB.Size = new System.Drawing.Size(156, 32);
+            this.rdb_ExportZBB.TabIndex = 1;
+            this.rdb_ExportZBB.Text = "批量批量导出ZBB";
+            this.rdb_ExportZBB.UseVisualStyleBackColor = true;
+            // 
+            // rdb_ExportZCB
+            // 
+            this.rdb_ExportZCB.AutoSize = true;
+            this.rdb_ExportZCB.Checked = true;
+            this.rdb_ExportZCB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rdb_ExportZCB.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdb_ExportZCB.Location = new System.Drawing.Point(0, 0);
+            this.rdb_ExportZCB.Margin = new System.Windows.Forms.Padding(0);
+            this.rdb_ExportZCB.Name = "rdb_ExportZCB";
+            this.rdb_ExportZCB.Size = new System.Drawing.Size(156, 32);
+            this.rdb_ExportZCB.TabIndex = 0;
+            this.rdb_ExportZCB.TabStop = true;
+            this.rdb_ExportZCB.Text = "批量导出ZCB";
+            this.rdb_ExportZCB.UseVisualStyleBackColor = true;
+            // 
+            // btn_Export_MediaDivide_Pai3
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.btn_Export_MediaDivide_Pai3, 4);
+            this.btn_Export_MediaDivide_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Export_MediaDivide_Pai3.Location = new System.Drawing.Point(156, 320);
+            this.btn_Export_MediaDivide_Pai3.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Export_MediaDivide_Pai3.Name = "btn_Export_MediaDivide_Pai3";
+            this.btn_Export_MediaDivide_Pai3.Size = new System.Drawing.Size(156, 32);
+            this.btn_Export_MediaDivide_Pai3.TabIndex = 53;
+            this.btn_Export_MediaDivide_Pai3.Text = "导出";
+            this.btn_Export_MediaDivide_Pai3.UseVisualStyleBackColor = true;
+            this.btn_Export_MediaDivide_Pai3.Click += new System.EventHandler(this.Btn_Export_MediaDivide_Pai3_Click);
+            // 
+            // pnl_Pai3
+            // 
+            this.pnl_Pai3.Controls.Add(this.tableLayoutPanel1);
+            this.pnl_Pai3.Controls.Add(this.tableLayoutPanel2);
+            this.pnl_Pai3.Controls.Add(this.groupBox2);
+            this.pnl_Pai3.Controls.Add(this.groupBox3);
+            this.pnl_Pai3.Controls.Add(this.groupBox1);
+            this.pnl_Pai3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_Pai3.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Pai3.Name = "pnl_Pai3";
+            this.pnl_Pai3.Size = new System.Drawing.Size(941, 430);
+            this.pnl_Pai3.TabIndex = 52;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 430);
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnl_MediaDivide_Pai3);
+            this.Controls.Add(this.pnl_Pai3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -577,6 +1467,38 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.pnl_MediaDivide_Pai3.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ToleranceStart_MediaDivide_Pai3)).EndInit();
+            this.panel13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ToleranceEnd_MediaDivide_Pai3)).EndInit();
+            this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_IssueCount_MediaDivide_Pai3)).EndInit();
+            this.panel11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_FileCount_MediaDivide_Pai3)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            this.pnl_Pai3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -620,6 +1542,61 @@
         private System.Windows.Forms.Button btn_TemplateClear;
         private System.Windows.Forms.Button btn_MediaClear;
         private System.Windows.Forms.NumericUpDown nud_PluginCount;
+        private System.Windows.Forms.Panel pnl_Pai3;
+        private System.Windows.Forms.Panel pnl_MediaDivide_Pai3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ComboBox cbx_SoccerType_MediaDivide_Pai3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btn_Delete_MediaDivide_Pai3;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.RadioButton rdb_ImportFile_MediaDivide_Pai3;
+        private System.Windows.Forms.RadioButton rdb_ImportDir_MediaDivide_Pai3;
+        private System.Windows.Forms.Button btn_Clear_MediaDivide_Pai3;
+        private System.Windows.Forms.Button btn_Import_MediaDivide_Pai3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.RadioButton rdb_ExportFile_MediaDivide_Pai3;
+        private System.Windows.Forms.RadioButton rdb_ExportDir_MediaDivide_Pai3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.ComboBox cbx_IssueStart_MediaDivide_pai3;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.ComboBox cbx_IssueEnd_MediaDivide_pai3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.ListBox lb_MediaDivide;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.RadioButton rdb_FileGap5;
+        private System.Windows.Forms.RadioButton rdb_FileGap4;
+        private System.Windows.Forms.RadioButton rdb_FileGap1;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.NumericUpDown nud_FileCount_MediaDivide_Pai3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.NumericUpDown nud_IssueCount_MediaDivide_Pai3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.NumericUpDown nud_ToleranceStart_MediaDivide_Pai3;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.NumericUpDown nud_ToleranceEnd_MediaDivide_Pai3;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.RadioButton rdb_ExportZBB;
+        private System.Windows.Forms.RadioButton rdb_ExportZCB;
+        private System.Windows.Forms.Button btn_Export_MediaDivide_Pai3;
+        private System.Windows.Forms.RadioButton rdb_FileGap2;
+        private System.Windows.Forms.RadioButton rdb_FileGap3;
+        private System.Windows.Forms.RadioButton rdb_FileGap0;
+        private System.Windows.Forms.RadioButton rdb_FileGap6;
     }
 }
 

@@ -25,6 +25,10 @@ namespace MediaFilter
         /// 导出模式:0-横模式 1-纵模式
         /// </summary>
         private int exportMode = 0;
+        /// <summary>
+        /// 排三媒体分割的隔期
+        /// </summary>
+        private int fileGap = 0;
         private CommonOpenFileDialog commonOpenFileDialog = new CommonOpenFileDialog() { AllowNonFileSystemItems = true };
         private FrmInputDirName frmInputDirName = new FrmInputDirName();
 
@@ -51,6 +55,9 @@ namespace MediaFilter
 
         private void InitializeUI()
         {
+            SetCBXSoccerType(cbx_SoccerType);
+            SetCBXSoccerType(cbx_SoccerType_MediaDivide_Pai3);
+
             cbx_SoccerType.SelectedIndex = 0;
             cbx_ExportMode.Items.Add(new DictionaryEntry(0, "横向"));
             cbx_ExportMode.Items.Add(new DictionaryEntry(1, "纵向"));
@@ -58,13 +65,18 @@ namespace MediaFilter
             cbx_ExportMode.ValueMember = "key";
             cbx_ExportMode.SelectedIndex = 0;
 
-            nud_PluginCount.Value = Properties.Settings.Default.CountPlugin;
+            nud_PluginCount.Value = Properties.Settings.Default.PluginCount;
+            nud_FileCount_MediaDivide_Pai3.Value = Properties.Settings.Default.FileCount_MediaDivide_Pai3;
+            nud_IssueCount_MediaDivide_Pai3.Value = Properties.Settings.Default.IssueCount_MediaDivide_Pai3;
+            nud_ToleranceStart_MediaDivide_Pai3.Value = Properties.Settings.Default.ToleranceStart_MediaDivide_Pai3;
+            nud_ToleranceEnd_MediaDivide_Pai3.Value = Properties.Settings.Default.ToleranceEnd_MediaDivide_Pai3;
 
             lb_Template.Items.Clear();
             lb_MediaFile.Items.Clear();
 
             btn_DeleteMedia.Tag = lb_MediaFile;
             btn_DeleteTemplate.Tag = lb_Template;
+            btn_Delete_MediaDivide_Pai3.Tag = lb_MediaDivide;
 
             //if ((DateTime.Now - DateTime.Parse("2022-07-10")).TotalDays > 14)
             //{
@@ -83,6 +95,16 @@ namespace MediaFilter
         }
 
         /// <summary>
+        /// 设置当前要处理的过滤类型
+        /// </summary>
+        /// <param name="cbx"></param>
+        private void SetCBXSoccerType(ComboBox cbx)
+        {
+            cbx.Items.Add("排三");
+            cbx.Items.Add("排三媒体分割");
+        }
+
+        /// <summary>
         /// 设置groupbox边框的颜色
         /// </summary>
         private void SetGroupBoxBorder(object sender, PaintEventArgs e)
@@ -93,28 +115,6 @@ namespace MediaFilter
             e.Graphics.DrawLine(Pens.DeepSkyBlue, 1, 7, 1, gbx.Height - 2);
             e.Graphics.DrawLine(Pens.DeepSkyBlue, 1, gbx.Height - 2, gbx.Width - 2, gbx.Height - 2);
             e.Graphics.DrawLine(Pens.DeepSkyBlue, gbx.Width - 2, 7, gbx.Width - 2, gbx.Height - 2);
-        }
-
-        private void DeleteTip(object sender, EventArgs e)
-        {
-            ListBox lb = (sender as Button).Tag as ListBox;
-            bool? deleteLocalTemplate = null;
-            if(lb.SelectedItems.Count > 0 && MessageBox.Show("确定删除选中项吗？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                int count = lb.SelectedItems.Count;
-                for (int i = 0; i < count; )
-                {
-                    if (deleteLocalTemplate == null)
-                    {
-                        if (lb.Name.Equals("lb_Template") && MessageBox.Show("是否删除已保存的历史模板？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes) deleteLocalTemplate = true;
-                        else deleteLocalTemplate = false;
-                    }
-                    if (Convert.ToBoolean(deleteLocalTemplate)) File.Delete(lb.SelectedItems[i].ToString());
-                    lb.Items.Remove(lb.SelectedItems[i]);
-                    count = lb.SelectedItems.Count;
-                    i = 0;
-                }
-            }
         }
 
         private void Btn_SaveTemplate_Click(object sender, EventArgs e)
@@ -136,24 +136,6 @@ namespace MediaFilter
             {
                 MessageBox.Show("保存失败，" + ex.Message);
             }
-        }
-
-        private void Btn_DataClear_Click(object sender, EventArgs e)
-        {
-            if ((sender as Button).Name.Contains("Media")) lb_MediaFile.Items.Clear();
-            else lb_Template.Items.Clear();
-        }
-
-        private void Cbx_ExportMode_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if ((sender as ComboBox).SelectedItem != null)
-                exportMode = Convert.ToInt32(((DictionaryEntry)(sender as ComboBox).SelectedItem).Key);
-        }
-
-        private void Nud_PluginCount_ValueChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.CountPlugin = Convert.ToInt32((sender as NumericUpDown).Value);
-            Properties.Settings.Default.Save();
         }
     }
 }
