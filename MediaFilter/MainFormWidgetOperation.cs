@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +29,6 @@ namespace MediaFilter
                     pnl_Pai3.Visible = false;
                     pnl_MediaDivide_Pai3.Visible = true;
                     cbx_SoccerType_MediaDivide_Pai3.Text = "排三媒体分割";
-                    rdb_ImportFile_MediaDivide_Pai3.Checked = true;
                     break;
                 default:
                     break;
@@ -49,6 +49,14 @@ namespace MediaFilter
             commonOpenFileDialog.IsFolderPicker = importDir;
             commonOpenFileDialog.Multiselect = true;
             commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ImportMediaLocation;
+
+            //选择文件且过滤器为空，才添加，否则会报错
+            if(!commonOpenFileDialog.IsFolderPicker && commonOpenFileDialog.Filters.Count == 0)
+            {
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("全部", "*"));
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("媒体", "lsm"));
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("模板", "flt"));
+            }
 
             isFileImport = !importDir;
 
@@ -107,9 +115,16 @@ namespace MediaFilter
             commonOpenFileDialog.Multiselect = true;
             commonOpenFileDialog.InitialDirectory = Application.StartupPath + "\\HisTempaltes";
 
-            if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            //选择文件且过滤器为空，才添加，否则会报错
+            if (commonOpenFileDialog.Filters.Count == 0)
             {
-                if (!btn_ImportMedia.Enabled) btn_ImportMedia.Enabled = true;
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("全部", "*"));
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("媒体", "lsm"));
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("模板", "flt"));
+            }
+
+            if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
                 lb_Template.Items.Clear();
                 foreach (string file in commonOpenFileDialog.FileNames.ToList())
                 {
@@ -124,6 +139,14 @@ namespace MediaFilter
             commonOpenFileDialog.IsFolderPicker = importDir;
             commonOpenFileDialog.Multiselect = true;
             commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ImportDividePai3Location;
+
+            //选择文件且过滤器为空，才添加，否则会报错
+            if (!commonOpenFileDialog.IsFolderPicker && commonOpenFileDialog.Filters.Count == 0)
+            {
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("全部", "*"));
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("媒体", "lsm"));
+                commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("模板", "flt"));
+            }
 
             isFileImport = !importDir;
 
@@ -208,7 +231,7 @@ namespace MediaFilter
                 commonOpenFileDialog.Multiselect = false;
                 commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ExportFilterLocation;
 
-                if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+                if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     Properties.Settings.Default.ExportFilterLocation = commonOpenFileDialog.FileName;
                     Properties.Settings.Default.Save();

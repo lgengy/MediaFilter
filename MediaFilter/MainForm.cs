@@ -40,10 +40,6 @@ namespace MediaFilter
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("全部","*"));
-            commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("媒体", "lsm"));
-            commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("模板", "flt"));
-
             frmInputDirName.SaveDirName_Event += FrmInputDirName_SaveDirName_Event;
         }
 
@@ -78,20 +74,18 @@ namespace MediaFilter
             btn_DeleteTemplate.Tag = lb_Template;
             btn_Delete_MediaDivide_Pai3.Tag = lb_MediaDivide;
 
-            //if ((DateTime.Now - DateTime.Parse("2022-07-10")).TotalDays > 14)
-            //{
-            //    btn_ImportMedia.Enabled = false;
-            //    btn_ImportTemplate.Enabled = false;
-            //    cbx_SoccerType.Enabled = false;
-            //    btn_Export.Enabled = false;
-            //}
-            //else
-            //{
-                btn_ImportMedia.Enabled = false;
-                btn_ImportTemplate.Enabled = true;
+            btn_ImportMedia.Enabled = true;
+            btn_ImportTemplate.Enabled = true;
+            btn_Export.Enabled = true;
+
+            if ((DateTime.Parse("2022-08-15") - DateTime.Now).TotalDays <= 0)
+            {
+                cbx_SoccerType.Enabled = false;
+            }
+            else
+            {
                 cbx_SoccerType.Enabled = true;
-                btn_Export.Enabled = true;
-            //}
+            }
         }
 
         /// <summary>
