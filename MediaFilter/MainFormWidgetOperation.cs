@@ -14,6 +14,9 @@ namespace MediaFilter
     partial class MainForm
     {
         #region 类型选择
+        /// <summary>
+        /// 过滤类型选择
+        /// </summary>
         private void Cbx_SoccerType_SelectedValueChanged(object sender, EventArgs e)
         {
             ComboBox cbx = sender as ComboBox;
@@ -25,12 +28,34 @@ namespace MediaFilter
                     cbx_SoccerType.Text = "排三";
                     rdb_ImportDirectory.Checked = true;
                     break;
-                case "排三媒体分割":
+                case "媒体分割":
                     pnl_Pai3.Visible = false;
                     pnl_MediaDivide_Pai3.Visible = true;
-                    cbx_SoccerType_MediaDivide_Pai3.Text = "排三媒体分割";
+                    cbx_SoccerType_MediaDivide_Pai3.Text = "媒体分割";
+                    if (rdb_ImportFile_MediaDivide.Checked) importDir = false;
                     break;
                 default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 切割类型选择
+        /// </summary>
+        private void Rdb_DivideType_CheckedChanged(object sender, EventArgs e)
+        {
+            switch ((sender as RadioButton).Name)
+            {
+                case "rdb_DivideType_PaiSan":
+                    rdb_ExportZBB.Enabled = true;
+                    break;
+                case "rdb_DivideType_ZuCai":
+                    rdb_ExportZCB.Checked = true;
+                    rdb_ExportZBB.Enabled = false;
+                    break;
+                case "rdb_DivideType_JinQiu":
+                    rdb_ExportZCB.Checked = true;
+                    rdb_ExportZBB.Enabled = false;
                     break;
             }
         }
@@ -51,7 +76,7 @@ namespace MediaFilter
             commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ImportMediaLocation;
 
             //选择文件且过滤器为空，才添加，否则会报错
-            if(!commonOpenFileDialog.IsFolderPicker && commonOpenFileDialog.Filters.Count == 0)
+            if (!commonOpenFileDialog.IsFolderPicker && commonOpenFileDialog.Filters.Count == 0)
             {
                 commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("全部", "*"));
                 commonOpenFileDialog.Filters.Add(new CommonFileDialogFilter("媒体", "lsm"));
@@ -60,7 +85,7 @@ namespace MediaFilter
 
             isFileImport = !importDir;
 
-            if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 lb_MediaFile.Items.Clear();
                 List<FileInfo> listFile = new List<FileInfo>();
@@ -76,7 +101,7 @@ namespace MediaFilter
                     foreach (string dir in commonOpenFileDialog.FileNames)
                     {
                         lb_MediaFile.Items.Add(dir);
-                        listIssue.Add(Utils.FindFileNameInPath(dir).Substring(0, 7));
+                        listIssue.Add(Utils.FindFileNameInPath(dir));
                     }
                     listIssue.Sort(new String_FileName_Sort());
 
@@ -133,12 +158,13 @@ namespace MediaFilter
             }
         }
 
-        private void Btn_Import_MediaDivide_Pai3_Click(object sender, EventArgs e)
+        private void Btn_Import_MediaDivide_Click(object sender, EventArgs e)
         {
             commonOpenFileDialog.Title = "请导入需要分割的文件";
-            commonOpenFileDialog.IsFolderPicker = importDir;
-            commonOpenFileDialog.Multiselect = true;
-            commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ImportDividePai3Location;
+            commonOpenFileDialog.IsFolderPicker = true;
+            if (importDir) commonOpenFileDialog.Multiselect = true;
+            else commonOpenFileDialog.Multiselect = false;
+            commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ImportDivideLocation;
 
             //选择文件且过滤器为空，才添加，否则会报错
             if (!commonOpenFileDialog.IsFolderPicker && commonOpenFileDialog.Filters.Count == 0)
@@ -150,58 +176,61 @@ namespace MediaFilter
 
             isFileImport = !importDir;
 
-            if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 lb_MediaDivide.Items.Clear();
                 List<FileInfo> listFile = new List<FileInfo>();
 
-                if (importDir) Properties.Settings.Default.ImportDividePai3Location = commonOpenFileDialog.FileNames.First();
-                else Properties.Settings.Default.ImportDividePai3Location = Utils.GetDirectoryFromPath(commonOpenFileDialog.FileNames.First());
+                Properties.Settings.Default.ImportDivideLocation = commonOpenFileDialog.FileNames.First();
+                //if (importDir) Properties.Settings.Default.ImportDivideLocation = commonOpenFileDialog.FileNames.First();
+                //else Properties.Settings.Default.ImportDivideLocation = Utils.GetDirectoryFromPath(commonOpenFileDialog.FileNames.First());
                 Properties.Settings.Default.Save();
 
                 if (importDir)
-                {
-                    List<string> listIssue = new List<string>();
-                    //导入的是目录的话直接添加
-                    foreach (string dir in commonOpenFileDialog.FileNames)
-                    {
-                        lb_MediaDivide.Items.Add(dir);
-                        listIssue.Add((Utils.FindFileNameInPath(dir).Length >= 7) ? Utils.FindFileNameInPath(dir).Substring(0, 7) : Utils.FindFileNameInPath(dir));
-                    }
-
-                    listIssue.Sort(new String_FileName_Sort());
-                    cbx_IssueStart_MediaDivide_pai3.Items.Clear();
-                    cbx_IssueEnd_MediaDivide_pai3.Items.Clear();
-                    cbx_IssueStart_MediaDivide_pai3.Items.AddRange(listIssue.ToArray());
-                    cbx_IssueEnd_MediaDivide_pai3.Items.AddRange(listIssue.ToArray());
-                    cbx_IssueStart_MediaDivide_pai3.SelectedIndex = 0;
-                    cbx_IssueEnd_MediaDivide_pai3.SelectedIndex = listIssue.Count - 1;
-                }
-                else
-                {
-                    //导入的是文件的话按文件名排序后添加
                     foreach (string file in commonOpenFileDialog.FileNames)
                     {
                         listFile.Add(new FileInfo(file));
                     }
+                else
+                    foreach (string file in Directory.GetFiles(commonOpenFileDialog.FileName).ToList())
+                    {
+                        listFile.Add(new FileInfo(file));
+                    }
 
-                    listFile.Sort(new FileInfo_FileName_Sort());
-                    listFile.Reverse();
-                    foreach (FileInfo file in listFile)
-                        lb_MediaDivide.Items.Add(file.FullName);
+                listFile.Sort(new FileInfo_FileName_Sort());
+                foreach (FileInfo file in listFile)
+                    lb_MediaDivide.Items.Add(file.FullName);
 
-                    cbx_IssueStart_MediaDivide_pai3.Items.Clear();
-                    cbx_IssueEnd_MediaDivide_pai3.Items.Clear();
-                    cbx_IssueStart_MediaDivide_pai3.Items.AddRange(listFile.Select(file => Utils.FindFileNameInPath(file.FullName).Substring(0, 7)).ToArray());
-                    cbx_IssueEnd_MediaDivide_pai3.Items.AddRange(listFile.Select(file => Utils.FindFileNameInPath(file.FullName).Substring(0, 7)).ToArray());
-                    cbx_IssueStart_MediaDivide_pai3.SelectedIndex = listFile.Count - 1;
-                    cbx_IssueEnd_MediaDivide_pai3.SelectedIndex = 0;
-                }
+                cbx_IssueStart_MediaDivide.Items.Clear();
+                cbx_IssueEnd_MediaDivide.Items.Clear();
+                //if (importDir)
+                //{
+                    cbx_IssueStart_MediaDivide.Items.AddRange(listFile.Select(file => Utils.FindFileNameInPath(file.FullName)).ToArray());
+                    cbx_IssueEnd_MediaDivide.Items.AddRange(listFile.Select(file => Utils.FindFileNameInPath(file.FullName)).ToArray());
+                //}
+                //else
+                //{
+                //    cbx_IssueStart_MediaDivide.Items.AddRange(listFile.Select(file => Utils.FindFileNameInPath(file.FullName).Substring(0, 7)).ToArray());
+                //    cbx_IssueEnd_MediaDivide.Items.AddRange(listFile.Select(file => Utils.FindFileNameInPath(file.FullName).Substring(0, 7)).ToArray());
+                //}
+                cbx_IssueStart_MediaDivide.SelectedIndex = 0;
+                cbx_IssueEnd_MediaDivide.SelectedIndex = listFile.Count - 1;
             }
         }
         #endregion
 
         #region 导出区
+        /// <summary>
+        /// 排三媒体过滤插件个数设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Nud_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.GetType().GetProperty((sender as NumericUpDown).Name.Replace("nud_", "")).SetValue(Properties.Settings.Default, Convert.ToInt32((sender as NumericUpDown).Value), null);
+            Properties.Settings.Default.Save();
+        }
+
         /// <summary>
         /// 排三媒体过滤模式选择
         /// </summary>
@@ -212,17 +241,14 @@ namespace MediaFilter
         }
 
         /// <summary>
-        /// 隔期设置
+        /// 排三媒体过滤导出
         /// </summary>
-        private void Rdb_FileGap_CheckedChanged(object sender, EventArgs e)
-        {
-            fileGap = Convert.ToInt32((sender as RadioButton).Text);
-        }
-
         private void Btn_Export_Click(object sender, EventArgs e)
         {
             try
             {
+                bool cover = false;//是否覆盖同名文件，避免重复提示
+
                 if (lb_MediaFile.Items.Count == 0 || lb_Template.Items.Count == 0) return;
                 if (cbx_IssueEnd.Text.CompareTo(cbx_IssueStart.Text) < 0) { MessageBox.Show("期号范围选择错误"); return; }
 
@@ -267,8 +293,8 @@ namespace MediaFilter
                             if (list.Count == 0) return;
                         }
 
-                        if (nud_PluginCount.Value == 1) CreateFilterFileOnePlugin(saveDir, list);
-                        else CreateFilterFileMultiPlugin(saveDir, list);
+                        if (nud_PluginCount.Value == 1) CreateFilterFileOnePlugin(saveDir, list, ref cover);
+                        else CreateFilterFileMultiPlugin(saveDir, list, ref cover);
                     }
                     else
                     {
@@ -285,8 +311,8 @@ namespace MediaFilter
                                     if (files.Count == 0) return;
                                 }
 
-                                if (nud_PluginCount.Value == 1) CreateFilterFileOnePlugin(saveDir, files);
-                                else CreateFilterFileMultiPlugin(saveDir, files);
+                                if (nud_PluginCount.Value == 1) CreateFilterFileOnePlugin(saveDir, files, ref cover);
+                                else CreateFilterFileMultiPlugin(saveDir, files, ref cover);
                             }
                         }
                     }
@@ -300,19 +326,21 @@ namespace MediaFilter
             }
         }
 
-        private void Btn_Export_MediaDivide_Pai3_Click(object sender, EventArgs e)
+        private void Btn_Export_MediaDivide_Click(object sender, EventArgs e)
         {
             try
             {
+                bool cover = false;
+
                 if (lb_MediaDivide.Items.Count == 0) return;
-                if (cbx_IssueEnd_MediaDivide_pai3.Text.CompareTo(cbx_IssueStart_MediaDivide_pai3.Text) < 0) { MessageBox.Show("期号范围选择错误"); return; }
+                if (cbx_IssueEnd_MediaDivide.Text.CompareTo(cbx_IssueStart_MediaDivide.Text) < 0) { MessageBox.Show("期号范围选择错误"); return; }
 
                 commonOpenFileDialog.Title = "请选择导出文件保存位置";
                 commonOpenFileDialog.IsFolderPicker = true;
                 commonOpenFileDialog.Multiselect = false;
                 commonOpenFileDialog.InitialDirectory = Properties.Settings.Default.ExportDivideFileLocation;
 
-                if (commonOpenFileDialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+                if (commonOpenFileDialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     Properties.Settings.Default.ExportDivideFileLocation = commonOpenFileDialog.FileName;
                     Properties.Settings.Default.Save();
@@ -326,9 +354,9 @@ namespace MediaFilter
                         saveDir = commonOpenFileDialog.FileName + "\\" + saveDirName;
 
                         if (string.IsNullOrEmpty(saveDirName)) return;
-                        if (Directory.Exists(saveDir) && MessageBox.Show("文件夹已存在，是否覆盖", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
-
-                        Directory.CreateDirectory(saveDir);
+                        if (Directory.Exists(saveDir))
+                            if (MessageBox.Show("文件夹已存在，是否覆盖", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                            else cover = true;
                     }
                     else
                     {
@@ -336,31 +364,18 @@ namespace MediaFilter
                     }
 
                     List<string> list = new List<string>();
-                    foreach (var item in lb_MediaDivide.Items)
+                    for (int i = 0; i < lb_MediaDivide.Items.Count; i ++)
                     {
-                        string fileName = Utils.FindFileNameInPath(item.ToString()).Length > 7 ? Utils.FindFileNameInPath(item.ToString()).Substring(0, 7) : Utils.FindFileNameInPath(item.ToString());
-                        if (fileName.CompareTo(cbx_IssueStart_MediaDivide_pai3.Text) >= 0 && fileName.CompareTo(cbx_IssueEnd_MediaDivide_pai3.Text) <= 0)
-                            list.Add(item.ToString());
-                    }
-
-                    if (isFileImport)
-                    {
-                        list.Sort(new String_FileName_Sort());
-                        list.Reverse();
-                        ExportDividedMedia(list, rdb_ExportZCB.Checked, saveDir);
-                    }
-                    else
-                    {
-                        foreach (string fullPath in list)
+                        string fileName = Utils.FindFileNameInPath(lb_MediaDivide.Items[i].ToString());//.Length > 7 ? Utils.FindFileNameInPath(lb_MediaDivide.Items[i].ToString()).Substring(0, 7) : Utils.FindFileNameInPath(lb_MediaDivide.Items[i].ToString());
+                        if (fileName.CompareTo(cbx_IssueStart_MediaDivide.Text) >= 0 && fileName.CompareTo(cbx_IssueEnd_MediaDivide.Text) <= 0)
                         {
-                            List<string> files = Directory.GetFiles(fullPath, rdb_ExportZCB.Checked ? "*.flt" : "*.zcb").ToList();
-                            files.Sort(new String_FileName_Sort());
-                            files.Reverse();
-                            ExportDividedMedia(files, rdb_ExportZCB.Checked, saveDir);
+                            for (int j = i; j < lb_MediaDivide.Items.Count; j++) list.Add(lb_MediaDivide.Items[j].ToString());
+                            ExportDividedMedia(list, rdb_ExportZCB.Checked, exportDir ? saveDir + "\\" + fileName : saveDir, fileName, ref cover);
                         }
+                        list.Clear();
                     }
 
-                    MessageBox.Show("导出成功");
+                    MessageBox.Show("结束导出");
                 }
             }
             catch (Exception ex)
@@ -374,7 +389,7 @@ namespace MediaFilter
 
         private void Btn_DataClear_Click(object sender, EventArgs e)
         {
-            
+
             switch ((sender as Button).Name)
             {
                 case "btn_MediaClear":
@@ -383,8 +398,10 @@ namespace MediaFilter
                 case "btn_TemplateClear":
                     lb_Template.Items.Clear();
                     break;
-                case "btn_Clear_MediaDivide_Pai3":
+                case "btn_Clear_MediaDivide":
                     lb_MediaDivide.Items.Clear();
+                    cbx_IssueStart_MediaDivide.Items.Clear();
+                    cbx_IssueEnd_MediaDivide.Items.Clear();
                     break;
                 default:
                     MessageBox.Show("清空失败");
@@ -414,10 +431,13 @@ namespace MediaFilter
             }
         }
 
-        private void Nud_ValueChanged(object sender, EventArgs e)
+        private void Cbx_TextChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.GetType().GetProperty((sender as NumericUpDown).Name.Replace("nud_", "")).SetValue(Properties.Settings.Default, Convert.ToInt32((sender as NumericUpDown).Value), null);
+            Properties.Settings.Default.GetType().GetProperty((sender as ComboBox).Name.Replace("cbx_", "")).SetValue(Properties.Settings.Default, Convert.ToInt32((sender as ComboBox).Text), null);
             Properties.Settings.Default.Save();
+
+            if ((sender as ComboBox).Name.Equals("cbx_FileGap_MediaDivide"))
+                fileGap = Convert.ToInt32((sender as ComboBox).Text);
         }
 
         private void RdBtn_ExportDirectory_CheckedChanged(object sender, EventArgs e)

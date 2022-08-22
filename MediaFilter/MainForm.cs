@@ -62,23 +62,24 @@ namespace MediaFilter
             cbx_ExportMode.SelectedIndex = 0;
 
             nud_PluginCount.Value = Properties.Settings.Default.PluginCount;
-            nud_FileCount_MediaDivide_Pai3.Value = Properties.Settings.Default.FileCount_MediaDivide_Pai3;
-            nud_IssueCount_MediaDivide_Pai3.Value = Properties.Settings.Default.IssueCount_MediaDivide_Pai3;
-            nud_ToleranceStart_MediaDivide_Pai3.Value = Properties.Settings.Default.ToleranceStart_MediaDivide_Pai3;
-            nud_ToleranceEnd_MediaDivide_Pai3.Value = Properties.Settings.Default.ToleranceEnd_MediaDivide_Pai3;
+            cbx_FileCount_MediaDivide.Text = Properties.Settings.Default.FileCount_MediaDivide.ToString();
+            cbx_IssueCount_MediaDivide.Text = Properties.Settings.Default.IssueCount_MediaDivide.ToString();
+            cbx_ToleranceStart_MediaDivide.Text = Properties.Settings.Default.ToleranceStart_MediaDivide.ToString();
+            cbx_ToleranceEnd_MediaDivide.Text = Properties.Settings.Default.ToleranceEnd_MediaDivide.ToString();
+            cbx_FileGap_MediaDivide.Text = Properties.Settings.Default.FileGap_MediaDivide.ToString();
 
             lb_Template.Items.Clear();
             lb_MediaFile.Items.Clear();
 
             btn_DeleteMedia.Tag = lb_MediaFile;
             btn_DeleteTemplate.Tag = lb_Template;
-            btn_Delete_MediaDivide_Pai3.Tag = lb_MediaDivide;
+            btn_Delete_MediaDivide.Tag = lb_MediaDivide;
 
             btn_ImportMedia.Enabled = true;
             btn_ImportTemplate.Enabled = true;
             btn_Export.Enabled = true;
 
-            if ((DateTime.Parse("2022-08-15") - DateTime.Now).TotalDays <= 0)
+            if ((DateTime.Parse("2022-09-15") - DateTime.Now).TotalDays <= 0)
             {
                 cbx_SoccerType.Enabled = false;
             }
@@ -95,7 +96,7 @@ namespace MediaFilter
         private void SetCBXSoccerType(ComboBox cbx)
         {
             cbx.Items.Add("排三");
-            cbx.Items.Add("排三媒体分割");
+            cbx.Items.Add("媒体分割");
         }
 
         /// <summary>

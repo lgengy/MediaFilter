@@ -11,23 +11,26 @@
     <Setting Name="ExportFilterLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
     </Setting>
-    <Setting Name="ImportDividePai3Location" Type="System.String" Scope="User">
+    <Setting Name="ImportDivideLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
     </Setting>
-    <Setting Name="ToleranceStart_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+    <Setting Name="ToleranceStart_MediaDivide" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ToleranceEnd_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+    <Setting Name="ToleranceEnd_MediaDivide" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="IssueCount_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+    <Setting Name="IssueCount_MediaDivide" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="FileCount_MediaDivide_Pai3" Type="System.Int32" Scope="User">
+    <Setting Name="FileCount_MediaDivide" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="ExportDivideFileLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\</Value>
+    </Setting>
+    <Setting Name="FileGap_MediaDivide" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -40,13 +40,12 @@ namespace MediaFilter
             return listRe;
         }
 
-        private void CreateFilterFileOnePlugin(string saveDir, List<string> listFile)
+        private void CreateFilterFileOnePlugin(string saveDir, List<string> listFile, ref bool coverExistFile)
         {
             int n = 0;//升数
             string name = ""; //用于计算n
             int pluginCount;//插件个数
             int fileCount = 0;//生成文件个数
-            bool cover = false;//是否覆盖同名文件
 
             //计算横模式升数
             if (exportMode == 0)
@@ -78,8 +77,9 @@ namespace MediaFilter
                 {
                     string saveName = saveDir + "\\" + Utils.FindFileNameInPath(listFile[i]).Split('_')[0] + $"过滤条件单插件-{fileCount++}.flt";
 
-                    if (!cover && File.Exists(saveName) && MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
-                    else cover = true;
+                    if (!coverExistFile && File.Exists(saveName))
+                        if(MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                        else coverExistFile = true;
 
                     StreamReader srTemplate = new StreamReader(lb_Template.Items[0].ToString(), Encoding.GetEncoding("GB2312"));
                     StreamWriter sw = new StreamWriter(saveName, false, srTemplate.CurrentEncoding);
@@ -133,18 +133,18 @@ namespace MediaFilter
             }
         }
 
-        private void CreateFilterFileMultiPlugin(string saveDir, List<string> listFile)
+        private void CreateFilterFileMultiPlugin(string saveDir, List<string> listFile, ref bool coverExistFile)
         {
             int m;//每个插件要过滤的升数
             int pluginCount = 0;//插件个数
-            bool cover = false;//是否覆盖同名文件
 
             m = listFile.Count / Convert.ToInt32(nud_PluginCount.Value);
 
             string saveName = saveDir + "\\" + Utils.FindFileNameInPath(listFile[0]).Split('_')[0] + $"过滤条件{nud_PluginCount.Value}插件.flt";
 
-            if (!cover && File.Exists(saveName) && MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
-            else cover = true;
+            if (!coverExistFile && File.Exists(saveName))
+                if(MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                else coverExistFile = true;
 
             StreamReader srTemplate = new StreamReader(lb_Template.Items[0].ToString(), Encoding.GetEncoding("GB2312"));
             StreamWriter sw = new StreamWriter(saveName, false, srTemplate.CurrentEncoding);
@@ -200,39 +200,48 @@ namespace MediaFilter
         }
         #endregion
 
-        #region 排三媒体分割
+        #region 媒体分割
 
-        private void ExportDividedMedia(List<string> list, bool exportZCB, string saveDir)
+        private void ExportDividedMedia(List<string> list, bool exportZCB, string saveDir, string name, ref bool coverExistFiles)
         {
-            bool cover = false;
             int currentIndex = 0;//当前已输出的文件索引
+            if(!Directory.Exists(saveDir)) Directory.CreateDirectory(saveDir);
 
-            //i用来标记文件序号
-            for (int i = 1; i < nud_FileCount_MediaDivide_Pai3.Value + 1; i++)
+            try
             {
-                //当剩余文件数不能再形成一个完整文件时停止导出（有点难想）
-                if (currentIndex != 0 && ((list.Count - currentIndex - 1) < (fileGap + 1) * Convert.ToInt32(nud_IssueCount_MediaDivide_Pai3.Value))) return;
-                if (currentIndex == 0 && ((list.Count - currentIndex) < (fileGap + 1) * Convert.ToInt32(nud_IssueCount_MediaDivide_Pai3.Value)))
+                //i用来标记文件序号
+                for (int i = 1; i < Convert.ToInt32(cbx_FileCount_MediaDivide.Text) + 1; i++)
                 {
-                    MessageBox.Show("导入文件数量不足以进行切割");
-                    return;
+                    //当剩余文件数不能再形成一个完整文件时停止导出（有点难想）
+                    if (currentIndex != 0 && ((list.Count - currentIndex - 1) < (fileGap + 1) * Convert.ToInt32(cbx_IssueCount_MediaDivide.Text))) return;
+                    if (currentIndex == 0 && ((list.Count - currentIndex) < (fileGap + 1) * Convert.ToInt32(cbx_IssueCount_MediaDivide.Text)))
+                    {
+                        //MessageBox.Show("导入文件数量不足以进行切割");
+                        return;
+                    }
+
+                    string fileName = saveDir + "\\" + name + (exportZCB ? "批量-" : "批量的批量-") + i + (exportZCB ? ".zcb" : ".zbb");
+
+                    if (!coverExistFiles && File.Exists(fileName))
+                        if ((MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No)) return;
+                        else coverExistFiles = true;
+
+                    StreamWriter sw = new StreamWriter(fileName, false, Encoding.GetEncoding("GB2312"));
+                    sw.WriteLine($"E|{cbx_ToleranceStart_MediaDivide.Text}-{cbx_ToleranceEnd_MediaDivide.Text}");
+                    //j-计算索引 count-计算已导出个数
+                    for (int count = 0; count < Convert.ToInt32(cbx_IssueCount_MediaDivide.Text); count++)
+                    {
+                        sw.WriteLine($"@1 1 --- --- {list[currentIndex]}");
+                        currentIndex += (fileGap + 1);
+                    }
+                    sw.Flush();
+                    sw.Close();
                 }
-
-                string fileName = saveDir + "\\" + Path.GetFileName(list[0]).Substring(0, 7) + "遗漏-" + i + (exportZCB ? ".zcb" : ".zbb");
-
-                if (!cover && File.Exists(fileName) && MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No) return;
-                else cover = true;
-
-                StreamWriter sw = new StreamWriter(fileName, false, Encoding.GetEncoding("GB2312"));
-                sw.WriteLine($"E|{nud_ToleranceStart_MediaDivide_Pai3.Value}-{nud_ToleranceEnd_MediaDivide_Pai3.Value}");
-                //j-计算索引 count-计算已导出个数
-                for (int j = 0,count = 0; count < nud_IssueCount_MediaDivide_Pai3.Value; j += (fileGap + 1), count ++)
-                {
-                    currentIndex = j + (i - 1) * Convert.ToInt32(nud_IssueCount_MediaDivide_Pai3.Value);
-                    sw.WriteLine($"@1 1 --- --- {list[currentIndex]}");
-                }
-                sw.Flush();
-                sw.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
             }
         }
         #endregion
