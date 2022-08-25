@@ -1119,6 +1119,7 @@
             this.rdb_ExportZBB.TabIndex = 1;
             this.rdb_ExportZBB.Text = "批量批量导出ZBB";
             this.rdb_ExportZBB.UseVisualStyleBackColor = true;
+            this.rdb_ExportZBB.CheckedChanged += new System.EventHandler(this.Rdb_ExportZBB_CheckedChanged);
             // 
             // rdb_ExportZCB
             // 
@@ -1134,6 +1135,7 @@
             this.rdb_ExportZCB.TabStop = true;
             this.rdb_ExportZCB.Text = "批量导出ZCB";
             this.rdb_ExportZCB.UseVisualStyleBackColor = true;
+            this.rdb_ExportZCB.CheckedChanged += new System.EventHandler(this.Rdb_ExportZCB_CheckedChanged);
             // 
             // btn_Export_MediaDivide_Pai3
             // 

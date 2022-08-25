@@ -205,22 +205,45 @@ namespace MediaFilter
         private void ExportDividedMedia(List<string> list, bool exportZCB, string saveDir, string name, ref bool coverExistFiles)
         {
             int currentIndex = 0;//当前已输出的文件索引
+            if (list.Count == 0) return;
             if(!Directory.Exists(saveDir)) Directory.CreateDirectory(saveDir);
 
             try
             {
-                //i用来标记文件序号
-                for (int i = 1; i < Convert.ToInt32(cbx_FileCount_MediaDivide.Text) + 1; i++)
+                if (exportZCB)
                 {
-                    //当剩余文件数不能再形成一个完整文件时停止导出（有点难想）
-                    if (currentIndex != 0 && ((list.Count - currentIndex - 1) < (fileGap + 1) * Convert.ToInt32(cbx_IssueCount_MediaDivide.Text))) return;
-                    if (currentIndex == 0 && ((list.Count - currentIndex) < (fileGap + 1) * Convert.ToInt32(cbx_IssueCount_MediaDivide.Text)))
+                    //i用来标记文件序号
+                    for (int i = 1; i < Convert.ToInt32(cbx_FileCount_MediaDivide.Text) + 1; i++)
                     {
-                        //MessageBox.Show("导入文件数量不足以进行切割");
-                        return;
-                    }
+                        //当剩余文件数不能再形成一个完整文件时停止导出（有点难想）
+                        if (currentIndex != 0 && ((list.Count - currentIndex - 1) < (fileGap + 1) * Convert.ToInt32(cbx_IssueCount_MediaDivide.Text))) return;
+                        if (currentIndex == 0 && ((list.Count - currentIndex) < (fileGap + 1) * Convert.ToInt32(cbx_IssueCount_MediaDivide.Text)))
+                        {
+                            //MessageBox.Show("导入文件数量不足以进行切割");
+                            return;
+                        }
 
-                    string fileName = saveDir + "\\" + name + (exportZCB ? "批量-" : "批量的批量-") + i + (exportZCB ? ".zcb" : ".zbb");
+                        string fileName = saveDir + "\\" + name + "批量-" + i + ".zcb";
+
+                        if (!coverExistFiles && File.Exists(fileName))
+                            if ((MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No)) return;
+                            else coverExistFiles = true;
+
+                        StreamWriter sw = new StreamWriter(fileName, false, Encoding.GetEncoding("GB2312"));
+                        sw.WriteLine($"E|{cbx_ToleranceStart_MediaDivide.Text}-{cbx_ToleranceEnd_MediaDivide.Text}");
+                        //j-计算索引 count-计算已导出个数
+                        for (int count = 0; count < Convert.ToInt32(cbx_IssueCount_MediaDivide.Text); count++)
+                        {
+                            sw.WriteLine($"@1 1 --- --- {list[currentIndex]}");
+                            currentIndex += (fileGap + 1);
+                        }
+                        sw.Flush();
+                        sw.Close();
+                    }
+                }
+                else
+                {
+                    string fileName = saveDir + "\\" + name + "-批量的批量.zbb";
 
                     if (!coverExistFiles && File.Exists(fileName))
                         if ((MessageBox.Show("文件已存在，是否覆盖？", "提示", MessageBoxButtons.YesNo) == DialogResult.No)) return;
@@ -229,7 +252,7 @@ namespace MediaFilter
                     StreamWriter sw = new StreamWriter(fileName, false, Encoding.GetEncoding("GB2312"));
                     sw.WriteLine($"E|{cbx_ToleranceStart_MediaDivide.Text}-{cbx_ToleranceEnd_MediaDivide.Text}");
                     //j-计算索引 count-计算已导出个数
-                    for (int count = 0; count < Convert.ToInt32(cbx_IssueCount_MediaDivide.Text); count++)
+                    for (int count = 0; count < list.Count; count++)
                     {
                         sw.WriteLine($"@1 1 --- --- {list[currentIndex]}");
                         currentIndex += (fileGap + 1);

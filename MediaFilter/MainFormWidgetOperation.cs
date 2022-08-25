@@ -33,6 +33,9 @@ namespace MediaFilter
                     pnl_MediaDivide_Pai3.Visible = true;
                     cbx_SoccerType_MediaDivide_Pai3.Text = "媒体分割";
                     if (rdb_ImportFile_MediaDivide.Checked) importDir = false;
+
+                    rdb_ImportFile_MediaDivide.Enabled = rdb_ExportZCB.Checked;
+                    rdb_ImportDir_MediaDivide.Enabled = !rdb_ExportZCB.Checked;
                     break;
                 default:
                     break;
@@ -220,6 +223,7 @@ namespace MediaFilter
         #endregion
 
         #region 导出区
+        #region 排三
         /// <summary>
         /// 排三媒体过滤插件个数设置
         /// </summary>
@@ -325,7 +329,42 @@ namespace MediaFilter
                 MessageBox.Show("导出失败，" + ex.Message);
             }
         }
+        #endregion
 
+        #region 媒体过滤
+        private void Rdb_ExportZBB_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                if (rdb_ImportFile_MediaDivide.Checked && lb_MediaDivide.Items.Count > 0)
+                {
+                    MessageBox.Show("批量批量导出时，只能导入目录，请重新导入");
+                    lb_MediaDivide.Items.Clear();
+                }
+                rdb_ImportFile_MediaDivide.Enabled = false;
+                rdb_ImportDir_MediaDivide.Enabled = true;
+                rdb_ImportDir_MediaDivide.Checked = true;
+            }
+        }
+
+        private void Rdb_ExportZCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as RadioButton).Checked)
+            {
+                if (rdb_ImportDir_MediaDivide.Checked && lb_MediaDivide.Items.Count > 0)
+                {
+                    MessageBox.Show("批量导出时，只能导入文件，请重新导入");
+                    lb_MediaDivide.Items.Clear();
+                }
+                rdb_ImportDir_MediaDivide.Enabled = false;
+                rdb_ImportFile_MediaDivide.Enabled = true;
+                rdb_ImportFile_MediaDivide.Checked = true;
+            }
+        }
+
+        /// <summary>
+        /// 媒体切割导出
+        /// </summary>
         private void Btn_Export_MediaDivide_Click(object sender, EventArgs e)
         {
             try
@@ -369,8 +408,16 @@ namespace MediaFilter
                         string fileName = Utils.FindFileNameInPath(lb_MediaDivide.Items[i].ToString());//.Length > 7 ? Utils.FindFileNameInPath(lb_MediaDivide.Items[i].ToString()).Substring(0, 7) : Utils.FindFileNameInPath(lb_MediaDivide.Items[i].ToString());
                         if (fileName.CompareTo(cbx_IssueStart_MediaDivide.Text) >= 0 && fileName.CompareTo(cbx_IssueEnd_MediaDivide.Text) <= 0)
                         {
-                            for (int j = i; j < lb_MediaDivide.Items.Count; j++) list.Add(lb_MediaDivide.Items[j].ToString());
-                            ExportDividedMedia(list, rdb_ExportZCB.Checked, exportDir ? saveDir + "\\" + fileName : saveDir, fileName, ref cover);
+                            if (rdb_ExportZCB.Checked)
+                            {
+                                for (int j = i; j >= 0; j--) list.Add(lb_MediaDivide.Items[j].ToString());
+                                ExportDividedMedia(list, rdb_ExportZCB.Checked, exportDir ? saveDir + "\\" + fileName : saveDir, fileName, ref cover);
+                            }
+                            if (rdb_ExportZBB.Checked)
+                            {
+                                list.AddRange(Utils.GetFileFromPath(lb_MediaDivide.Items[i].ToString()));
+                                ExportDividedMedia(list, rdb_ExportZCB.Checked, saveDir, fileName, ref cover);
+                            }
                         }
                         list.Clear();
                     }
@@ -383,6 +430,7 @@ namespace MediaFilter
                 MessageBox.Show("导出失败，" + ex.Message);
             }
         }
+        #endregion
         #endregion
 
         #region 共用组件操作函数
